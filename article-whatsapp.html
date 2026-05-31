@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wiring WhatsApp into Odoo — Ibrahim Abu Haraz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<link rel="stylesheet" href="assets/pages.css" />
+<link rel="stylesheet" href="assets/article.css" />
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<article>
+<section class="article-head" data-screen-label="01 Article Head">
+  <div class="wrap">
+    <a href="articles.html" class="article-back">
+      <span>←</span>
+      <span class="lang-ar">كل الملاحظات</span><span class="lang-en">All notes</span>
+    </a>
+    <div class="article-tagrow">
+      <span class="note-cat">INTEGRATION</span>
+      <span class="sep">/</span>
+      <span>2025 · 05 · 03</span>
+      <span class="sep">/</span>
+      <span class="lang-ar">قراءة 5 دقائق</span><span class="lang-en">5 min read</span>
+    </div>
+    <h1 class="article-title">
+      <span class="lang-ar">ربط واتساب بأودو لتنبيهات المبيعات والدعم</span>
+      <span class="lang-en">Wiring WhatsApp into Odoo for sales &amp; support alerts</span>
+    </h1>
+    <p class="article-standfirst">
+      <span class="lang-ar">واتساب هو القناة الأولى في المنطقة. كيفية ربطه عبر الـCloud API بشكل موثوق دون كسر تدفقات أودو القياسية.</span>
+      <span class="lang-en">WhatsApp is the region's primary channel. How to connect it via the Cloud API reliably — without breaking Odoo's standard flows.</span>
+    </p>
+    <div class="article-byline">
+      <span class="portrait"><img src="assets/portrait.png" alt="Ibrahim Abu Haraz" width="40" height="40" /></span>
+      <span><b>Ibrahim Abu Haraz</b> · <span class="lang-ar">مستشار أودو</span><span class="lang-en">ERP Consultant</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap article-body">
+  <aside class="article-toc">
+    <span class="label">/ <span class="lang-ar">المحتوى</span><span class="lang-en">On this page</span></span>
+    <a href="#a1"><span class="lang-ar">١. لماذا الـAPI الرسمي</span><span class="lang-en">1. Why the official API</span></a>
+    <a href="#a2"><span class="lang-ar">٢. القوالب المعتمدة</span><span class="lang-en">2. Approved templates</span></a>
+    <a href="#a3"><span class="lang-ar">٣. حالات الاستخدام</span><span class="lang-en">3. Use cases</span></a>
+    <a href="#a4"><span class="lang-ar">٤. ما يجب تجنّبه</span><span class="lang-en">4. What to avoid</span></a>
+  </aside>
+
+  <div class="prose">
+    <p>
+      <span class="lang-ar">في الخليج، العميل لا يفتح بريده الإلكتروني لكنه يرد على واتساب خلال دقائق. ربط واتساب بأودو يحوّل النظام من سجل داخلي إلى قناة تواصل حية مع العملاء. لكن الطريقة الصحيحة للربط تختلف جذرياً عن الحلول المختصرة التي تنكسر بعد أسابيع.</span>
+      <span class="lang-en">In the Gulf, a customer won't open their email but will reply on WhatsApp within minutes. Connecting WhatsApp to Odoo turns the system from an internal ledger into a live customer channel. But the right way to integrate differs sharply from the shortcuts that break after a few weeks.</span>
+    </p>
+
+    <h2 id="a1"><span class="h2-num">01</span><span class="lang-ar">استخدم الـCloud API الرسمي فقط</span><span class="lang-en">Use only the official Cloud API</span></h2>
+    <p>
+      <span class="lang-ar">الحلول التي تتحكم بهاتف فعلي أو متصفح مخفي تُخالف شروط واتساب وتُحظر فجأة. الـCloud API الرسمي من Meta مستقر، قانوني، ومدعوم رسمياً في أودو ١٧.</span>
+      <span class="lang-en">Solutions that control a physical phone or a hidden browser violate WhatsApp's terms and get banned without warning. Meta's official Cloud API is stable, legal, and natively supported in Odoo 17.</span>
+    </p>
+    <div class="code-block"><span class="c-com"># what you register with Meta first</span>
+1. <span class="c-key">Meta Business</span> account + verified business
+2. <span class="c-key">WhatsApp number</span> (not tied to a personal app)
+3. <span class="c-key">Permanent access token</span> for the API
+4. <span class="c-key">Webhook</span> URL pointing back to Odoo</div>
+
+    <h2 id="a2"><span class="h2-num">02</span><span class="lang-ar">القوالب المعتمدة ليست اختيارية</span><span class="lang-en">Approved templates aren't optional</span></h2>
+    <p>
+      <span class="lang-ar">خارج نافذة الـ٢٤ ساعة من آخر رسالة عميل، لا يمكنك إرسال رسالة حرة — فقط قوالب معتمدة مسبقاً من Meta. خطّط لقوالبك مبكراً لأن الاعتماد قد يستغرق أياماً.</span>
+      <span class="lang-en">Outside the 24-hour window from a customer's last message, you can't send free-form text — only templates pre-approved by Meta. Plan your templates early, because approval can take days.</span>
+    </p>
+    <div class="callout-box">
+      <span class="callout-kicker"><span class="lang-ar">نصيحة</span><span class="lang-en">Tip</span></span>
+      <p><span class="lang-ar">اكتب القوالب بالعربية والإنجليزية، واجعل المتغيّرات قليلة وواضحة. القوالب المعقّدة تُرفض أكثر.</span><span class="lang-en">Write templates in both Arabic and English, and keep variables few and clear. Complex templates get rejected more often.</span></p>
+    </div>
+
+    <h2 id="a3"><span class="h2-num">03</span><span class="lang-ar">حالات الاستخدام التي تعطي قيمة فورية</span><span class="lang-en">Use cases that deliver instant value</span></h2>
+    <ul>
+      <li><span class="lang-ar"><strong>تأكيد الطلب:</strong> رسالة تلقائية فور تأكيد أمر البيع.</span><span class="lang-en"><strong>Order confirmation:</strong> an automatic message the moment a sales order is confirmed.</span></li>
+      <li><span class="lang-ar"><strong>إشعار الشحن:</strong> رقم التتبع يُرسل تلقائياً عند التسليم.</span><span class="lang-en"><strong>Shipping alert:</strong> the tracking number sent automatically on delivery.</span></li>
+      <li><span class="lang-ar"><strong>تذكير الدفع:</strong> تذكير لطيف بالفواتير المستحقة.</span><span class="lang-en"><strong>Payment reminder:</strong> a gentle nudge on overdue invoices.</span></li>
+      <li><span class="lang-ar"><strong>تذاكر الدعم:</strong> ربط محادثات واتساب بوحدة Helpdesk مباشرة.</span><span class="lang-en"><strong>Support tickets:</strong> WhatsApp threads linked straight to the Helpdesk module.</span></li>
+    </ul>
+
+    <h2 id="a4"><span class="h2-num">04</span><span class="lang-ar">ما يجب تجنّبه</span><span class="lang-en">What to avoid</span></h2>
+    <ul>
+      <li><span class="lang-ar"><strong>الإفراط في الرسائل:</strong> رسالة واحدة غير ضرورية وقد يحظرك العميل، فينهار معدل التسليم.</span><span class="lang-en"><strong>Over-messaging:</strong> one unnecessary message and the customer blocks you, tanking your delivery rate.</span></li>
+      <li><span class="lang-ar"><strong>تجاهل الردود:</strong> إن أرسلت تنبيهات دون أن يردّ عليها أحد، تفقد ثقة العميل. اربط الردود بفريق فعلي.</span><span class="lang-en"><strong>Ignoring replies:</strong> if you push alerts nobody answers, you lose trust. Route replies to a real team.</span></li>
+    </ul>
+    <div class="article-stats">
+      <div><span class="s-num">24h</span><span class="s-lab"><span class="lang-ar">نافذة الرسائل الحرة</span><span class="lang-en">free-message window</span></span></div>
+      <div><span class="s-num">API</span><span class="s-lab"><span class="lang-ar">رسمي فقط</span><span class="lang-en">official only</span></span></div>
+      <div><span class="s-num">2</span><span class="s-lab"><span class="lang-ar">لغتا القوالب</span><span class="lang-en">template languages</span></span></div>
+    </div>
+    <p>
+      <span class="lang-ar">واتساب المربوط جيداً يجعل العميل يشعر أن الشركة منظمة ومهتمة — وهذا انطباع يصعب شراؤه بأي طريقة أخرى.</span>
+      <span class="lang-en">A well-integrated WhatsApp makes customers feel the company is organised and attentive — an impression that's hard to buy any other way.</span>
+    </p>
+  </div>
+</section>
+
+<section class="article-foot">
+  <div class="wrap">
+    <div class="article-cta">
+      <span class="label">§ <span class="lang-ar">تريد ربط واتساب؟</span><span class="lang-en">Want WhatsApp integration?</span></span>
+      <h2><span class="lang-ar">أربطه بشكل رسمي ومستقر.</span><span class="lang-en">I set it up the official, stable way.</span></h2>
+      <p><span class="lang-ar">من تسجيل الرقم حتى أول رسالة تلقائية تصل عميلك، مع قوالب جاهزة باللغتين.</span><span class="lang-en">From number registration to the first automatic message reaching your customer, with bilingual templates ready to go.</span></p>
+      <a class="btn" href="contact.html"><span class="lang-ar">احجز الجلسة</span><span class="lang-en">Book the call</span><span class="arrow">↗</span></a>
+    </div>
+
+    <nav class="article-nav">
+      <a class="prev" href="article-why-fail.html">
+        <span class="an-dir">← <span class="lang-ar">السابق</span><span class="lang-en">Previous</span></span>
+        <span class="an-title"><span class="lang-ar">لماذا تفشل تطبيقات ERP</span><span class="lang-en">Why ERP rollouts fail</span></span>
+      </a>
+      <a class="next" href="article-upgrade.html">
+        <span class="an-dir"><span class="lang-ar">التالي</span><span class="lang-en">Next</span> →</span>
+        <span class="an-title"><span class="lang-ar">ترقية أودو v15 → v17</span><span class="lang-en">Upgrading Odoo v15 → v17</span></span>
+      </a>
+    </nav>
+  </div>
+</section>
+</article>
+
+<div id="site-footer"></div>
+
+<script src="assets/shared.js"></script>
+<script src="assets/partials.js"></script>
+</body>
+</html>

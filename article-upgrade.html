@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Upgrading Odoo v15 → v17 — Ibrahim Abu Haraz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<link rel="stylesheet" href="assets/pages.css" />
+<link rel="stylesheet" href="assets/article.css" />
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<article>
+<!-- HEAD -->
+<section class="article-head" data-screen-label="01 Article Head">
+  <div class="wrap">
+    <a href="articles.html" class="article-back">
+      <span>←</span>
+      <span class="lang-ar">كل الملاحظات</span><span class="lang-en">All notes</span>
+    </a>
+    <div class="article-tagrow">
+      <span class="note-cat">UPGRADE</span>
+      <span class="sep">/</span>
+      <span>2026 · 03 · 14</span>
+      <span class="sep">/</span>
+      <span class="lang-ar">قراءة 7 دقائق</span><span class="lang-en">7 min read</span>
+    </div>
+    <h1 class="article-title">
+      <span class="lang-ar">قائمة فحص قبل ترقية أودو من v15 إلى v17</span>
+      <span class="lang-en">A pre-flight checklist for upgrading Odoo v15 → v17</span>
+    </h1>
+    <p class="article-standfirst">
+      <span class="lang-ar">الترقية بين الإصدارات الكبرى ليست عملية بزر واحد. هذه القائمة تغطي ما يجب اختباره وتوثيقه قبل أن تلمس قاعدة بيانات الإنتاج.</span>
+      <span class="lang-en">Jumping two major versions is never a one-click affair. This is what to test and document before you ever touch the production database.</span>
+    </p>
+    <div class="article-byline">
+      <span class="portrait"><img src="assets/portrait.png" alt="Ibrahim Abu Haraz" width="40" height="40" /></span>
+      <span><b>Ibrahim Abu Haraz</b> · <span class="lang-ar">مستشار أودو</span><span class="lang-en">ERP Consultant</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<section class="wrap article-body">
+  <aside class="article-toc">
+    <span class="label">/ <span class="lang-ar">المحتوى</span><span class="lang-en">On this page</span></span>
+    <a href="#a1"><span class="lang-ar">١. لا ترقّي على الإنتاج</span><span class="lang-en">1. Never on production</span></a>
+    <a href="#a2"><span class="lang-ar">٢. جرد الوحدات المخصصة</span><span class="lang-en">2. Inventory custom modules</span></a>
+    <a href="#a3"><span class="lang-ar">٣. اختبار البيانات</span><span class="lang-en">3. Test the data</span></a>
+    <a href="#a4"><span class="lang-ar">٤. التقارير والمطبوعات</span><span class="lang-en">4. Reports & prints</span></a>
+    <a href="#a5"><span class="lang-ar">٥. خطة الرجوع</span><span class="lang-en">5. The rollback plan</span></a>
+  </aside>
+
+  <div class="prose">
+    <p>
+      <span class="lang-ar">أكثر مشروع ترقية فاشل رأيته بدأ بجملة: «إنها مجرد ترقية، أليس كذلك؟». الترقية من الإصدار ١٥ إلى ١٧ تعني تخطّي إصدار كامل، وكل وحدة مخصصة وكل تقرير وكل تكامل قد ينكسر بصمت. الخبر الجيد: كل هذه المخاطر يمكن التنبؤ بها واختبارها مسبقاً.</span>
+      <span class="lang-en">The worst upgrade project I've seen started with the phrase: "It's just an upgrade, right?" Moving from v15 to v17 skips an entire version, and every custom module, every report, and every integration can break silently. The good news: all of it is predictable and testable in advance.</span>
+    </p>
+
+    <h2 id="a1"><span class="h2-num">01</span><span class="lang-ar">القاعدة الأولى: لا ترقّي على الإنتاج أبداً</span><span class="lang-en">Rule one: never upgrade production directly</span></h2>
+    <p>
+      <span class="lang-ar">أنشئ نسخة طبق الأصل من قاعدة بيانات الإنتاج، ورقِّها في بيئة معزولة. أودو توفّر خدمة ترقية رسمية تأخذ نسخة من قاعدتك وتعيد لك نسخة مرقّاة لتختبرها — استخدمها قبل أي شيء آخر.</span>
+      <span class="lang-en">Take an exact copy of the production database and upgrade it in an isolated environment. Odoo provides an official upgrade service that takes a dump of your database and returns an upgraded copy for testing — use it before anything else.</span>
+    </p>
+    <div class="code-block"><span class="c-com"># dump production, restore into a sandbox</span>
+pg_dump -Fc prod_db &gt; prod.dump
+createdb upgrade_test
+pg_restore -d upgrade_test prod.dump
+<span class="c-com"># then run the upgrade against upgrade_test, never prod</span></div>
+    <div class="callout-box">
+      <span class="callout-kicker"><span class="lang-ar">قاعدة</span><span class="lang-en">Rule of thumb</span></span>
+      <p><span class="lang-ar">لا أعلن نجاح الترقية إلا بعد أن يستخدم مستخدم حقيقي البيئة المرقّاة ليوم كامل دون مفاجآت.</span><span class="lang-en">I don't call an upgrade successful until a real user has run the upgraded sandbox for a full day without surprises.</span></p>
+    </div>
+
+    <h2 id="a2"><span class="h2-num">02</span><span class="lang-ar">اجرد كل وحدة مخصصة</span><span class="lang-en">Inventory every custom module</span></h2>
+    <p>
+      <span class="lang-ar">الوحدات القياسية تتكفّل أودو بترقيتها. مشاكلك الحقيقية في الكود المخصص. اصنع قائمة بكل وحدة غير قياسية وصنّفها:</span>
+      <span class="lang-en">Standard modules are Odoo's problem to migrate. Your real risk is custom code. List every non-standard module and classify it:</span>
+    </p>
+    <ul>
+      <li><span class="lang-ar"><strong>تبقى:</strong> منطق أعمال أساسي يجب نقله للإصدار الجديد.</span><span class="lang-en"><strong>Keep:</strong> core business logic that must be ported.</span></li>
+      <li><span class="lang-ar"><strong>تُستبدل:</strong> ميزة أصبحت قياسية في v17 ولم تعد تحتاج وحدة مخصصة.</span><span class="lang-en"><strong>Replace:</strong> a feature now standard in v17 that no longer needs custom code.</span></li>
+      <li><span class="lang-ar"><strong>تُحذف:</strong> وحدات لم تعد مستخدمة — الترقية فرصة للتنظيف.</span><span class="lang-en"><strong>Drop:</strong> modules nobody uses anymore — the upgrade is a chance to clean house.</span></li>
+    </ul>
+    <p>
+      <span class="lang-ar">انتبه بشكل خاص لتغييرات الـAPI: حقول حُذفت، طرق أُعيدت تسميتها، وتغيّر سلوك <code>@api.depends</code>. شغّل وحداتك في v17 وراقب سجل الأخطاء بعناية.</span>
+      <span class="lang-en">Watch API changes especially closely: removed fields, renamed methods, and changed <code>@api.depends</code> behaviour. Load your modules in v17 and read the error log line by line.</span>
+    </p>
+
+    <h2 id="a3"><span class="h2-num">03</span><span class="lang-ar">اختبر البيانات، لا الواجهة فقط</span><span class="lang-en">Test the data, not just the UI</span></h2>
+    <p>
+      <span class="lang-ar">أكثر الأعطال خطورة لا تظهر في الواجهة بل في الأرقام. قبل وبعد الترقية، صدّر تقارير المطابقة الأساسية وقارنها رقماً برقم:</span>
+      <span class="lang-en">The most dangerous failures don't show in the UI — they show in the numbers. Before and after the upgrade, export key reconciliation reports and compare them figure by figure:</span>
+    </p>
+    <ul>
+      <li><span class="lang-ar">رصيد ميزان المراجعة الإجمالي</span><span class="lang-en">Total trial-balance figures</span></li>
+      <li><span class="lang-ar">قيمة المخزون لكل مستودع</span><span class="lang-en">Stock valuation per warehouse</span></li>
+      <li><span class="lang-ar">أرصدة الذمم المدينة والدائنة</span><span class="lang-en">Open receivables and payables</span></li>
+    </ul>
+    <div class="callout-box">
+      <span class="callout-kicker"><span class="lang-ar">تحذير</span><span class="lang-en">Watch out</span></span>
+      <p><span class="lang-ar">أي فرق ولو ريال واحد بين قبل وبعد الترقية يجب تفسيره قبل المتابعة. الأرقام لا «تقترب» — إما أن تتطابق أو أن هناك خطأ.</span><span class="lang-en">Any difference — even one riyal — between before and after must be explained before proceeding. Numbers don't "get close"; they either match or something is wrong.</span></p>
+    </div>
+
+    <h2 id="a4"><span class="h2-num">04</span><span class="lang-ar">التقارير والمطبوعات تنكسر بصمت</span><span class="lang-en">Reports and prints break silently</span></h2>
+    <p>
+      <span class="lang-ar">قوالب QWeb المخصصة هي أكثر ما يُنسى. الفواتير، أوامر التسليم، كشوف الحسابات — اطبعها كلها في البيئة المرقّاة وتحقق من التنسيق، خاصة في الاتجاه من اليمين لليسار والخطوط العربية.</span>
+      <span class="lang-en">Custom QWeb templates are the most forgotten piece. Invoices, delivery orders, statements — print every one in the upgraded sandbox and check the layout, especially right-to-left flow and Arabic fonts.</span>
+    </p>
+
+    <h2 id="a5"><span class="h2-num">05</span><span class="lang-ar">جهّز خطة الرجوع قبل الإطلاق</span><span class="lang-en">Have a rollback plan before go-live</span></h2>
+    <p>
+      <span class="lang-ar">في يوم الترقية الفعلي، يجب أن تعرف بالضبط كيف تعود للإصدار السابق خلال دقائق لو ساءت الأمور. نسخة احتياطية كاملة قبل البدء، ونافذة زمنية متفق عليها، وقائمة اختبار قبول جاهزة للتشغيل فور انتهاء الترقية.</span>
+      <span class="lang-en">On the actual upgrade day, you must know exactly how to revert to the previous version within minutes if things go wrong. A full backup before you start, an agreed maintenance window, and an acceptance checklist ready to run the moment the upgrade finishes.</span>
+    </p>
+    <div class="article-stats">
+      <div><span class="s-num">3×</span><span class="s-lab"><span class="lang-ar">دورات اختبار</span><span class="lang-en">test cycles</span></span></div>
+      <div><span class="s-num">0</span><span class="s-lab"><span class="lang-ar">تغيير على الإنتاج</span><span class="lang-en">prod changes</span></span></div>
+      <div><span class="s-num">&lt;15m</span><span class="s-lab"><span class="lang-ar">زمن الرجوع</span><span class="lang-en">rollback time</span></span></div>
+    </div>
+    <p>
+      <span class="lang-ar">الترقية الجيدة مملة — لا مفاجآت، لا سهر، لا مكالمات طارئة صباح الإطلاق. وهذا بالضبط هدف القائمة أعلاه.</span>
+      <span class="lang-en">A good upgrade is boring — no surprises, no all-nighters, no emergency calls the morning of go-live. That's exactly what the checklist above is for.</span>
+    </p>
+  </div>
+</section>
+
+<!-- FOOT -->
+<section class="article-foot">
+  <div class="wrap">
+    <div class="article-cta">
+      <span class="label">§ <span class="lang-ar">تفكّر في ترقية؟</span><span class="lang-en">Planning an upgrade?</span></span>
+      <h2><span class="lang-ar">دعني أراجع وحداتك المخصصة أولاً.</span><span class="lang-en">Let me review your custom modules first.</span></h2>
+      <p><span class="lang-ar">جلسة تشخيصية مجانية لتقدير حجم الترقية ومخاطرها قبل الالتزام بأي شيء.</span><span class="lang-en">A free diagnostic call to size the upgrade and its risks before you commit to anything.</span></p>
+      <a class="btn" href="contact.html"><span class="lang-ar">احجز الجلسة</span><span class="lang-en">Book the call</span><span class="arrow">↗</span></a>
+    </div>
+
+    <nav class="article-nav">
+      <a class="prev" href="article-whatsapp.html">
+        <span class="an-dir">← <span class="lang-ar">السابق</span><span class="lang-en">Previous</span></span>
+        <span class="an-title"><span class="lang-ar">ربط واتساب بأودو</span><span class="lang-en">Wiring WhatsApp into Odoo</span></span>
+      </a>
+      <a class="next" href="article-coa.html">
+        <span class="an-dir"><span class="lang-ar">التالي</span><span class="lang-en">Next</span> →</span>
+        <span class="an-title"><span class="lang-ar">شجرة حسابات لشركة مقاولات</span><span class="lang-en">Chart of accounts for contracting</span></span>
+      </a>
+    </nav>
+  </div>
+</section>
+</article>
+
+<div id="site-footer"></div>
+
+<script src="assets/shared.js"></script>
+<script src="assets/partials.js"></script>
+</body>
+</html>

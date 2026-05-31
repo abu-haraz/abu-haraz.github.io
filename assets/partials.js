@@ -2,10 +2,11 @@
 
 (function () {
   const PAGES = [
-    { href: "index.html",    ar: "الرئيسية", en: "Home" },
-    { href: "services.html", ar: "الخدمات",  en: "Services" },
-    { href: "about.html",    ar: "نبذة",     en: "About" },
-    { href: "contact.html",  ar: "تواصل",    en: "Contact" },
+    { href: "index.html",    ar: "الرئيسية",    en: "Home" },
+    { href: "services.html", ar: "الخدمات",    en: "Services" },
+    { href: "about.html",    ar: "نبذة",        en: "About" },
+    { href: "articles.html", ar: "مقالات",      en: "Notes" },
+    { href: "contact.html",  ar: "تواصل",      en: "Contact" },
   ];
 
   function currentFile() {
@@ -32,8 +33,7 @@
     </nav>
     <div class="nav-meta">
       <span class="status-dot">
-        <span class="lang-ar">متاح للمشاريع</span>
-        <span class="lang-en">Available</span>
+        <span class="lang-ar">متاح للمشاريع</span><span class="lang-en">Available</span>
       </span>
       <div class="lang-toggle" role="group" aria-label="Language">
         <button data-lang="ar" aria-pressed="true">ع</button>
@@ -66,6 +66,7 @@
           <li><a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a></li>
           <li><a href="services.html"><span class="lang-ar">الخدمات</span><span class="lang-en">Services</span></a></li>
           <li><a href="about.html"><span class="lang-ar">نبذة</span><span class="lang-en">About</span></a></li>
+          <li><a href="articles.html"><span class="lang-ar">مقالات</span><span class="lang-en">Notes</span></a></li>
           <li><a href="contact.html"><span class="lang-ar">تواصل</span><span class="lang-en">Contact</span></a></li>
         </ul>
       </div>
@@ -97,6 +98,7 @@
 </footer>`;
   }
 
+  // Auto-inject if mount points exist
   document.addEventListener("DOMContentLoaded", () => {
     const h = document.getElementById("site-header");
     const f = document.getElementById("site-footer");

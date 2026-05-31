@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chart of accounts for a Saudi contracting firm — Ibrahim Abu Haraz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<link rel="stylesheet" href="assets/pages.css" />
+<link rel="stylesheet" href="assets/article.css" />
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<article>
+<section class="article-head" data-screen-label="01 Article Head">
+  <div class="wrap">
+    <a href="articles.html" class="article-back">
+      <span>←</span>
+      <span class="lang-ar">كل الملاحظات</span><span class="lang-en">All notes</span>
+    </a>
+    <div class="article-tagrow">
+      <span class="note-cat">FINANCE</span>
+      <span class="sep">/</span>
+      <span>2026 · 02 · 02</span>
+      <span class="sep">/</span>
+      <span class="lang-ar">قراءة 9 دقائق</span><span class="lang-en">9 min read</span>
+    </div>
+    <h1 class="article-title">
+      <span class="lang-ar">كيف تُعدّ شجرة الحسابات لشركة مقاولات سعودية</span>
+      <span class="lang-en">Designing a chart of accounts for a Saudi contracting firm</span>
+    </h1>
+    <p class="article-standfirst">
+      <span class="lang-ar">المقاولات تحتاج شجرة حسابات تعكس المشاريع والمراحل والمحتجزات. هذه بنية عملية اختبرتها على أرض الواقع — بدون تعقيد لا لزوم له.</span>
+      <span class="lang-en">Contracting needs a chart of accounts that mirrors projects, phases, and retention. Here's a field-tested structure — without the needless complexity.</span>
+    </p>
+    <div class="article-byline">
+      <span class="portrait"><img src="assets/portrait.png" alt="Ibrahim Abu Haraz" width="40" height="40" /></span>
+      <span><b>Ibrahim Abu Haraz</b> · <span class="lang-ar">مستشار أودو</span><span class="lang-en">ERP Consultant</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap article-body">
+  <aside class="article-toc">
+    <span class="label">/ <span class="lang-ar">المحتوى</span><span class="lang-en">On this page</span></span>
+    <a href="#a1"><span class="lang-ar">١. المبدأ الأساسي</span><span class="lang-en">1. The core principle</span></a>
+    <a href="#a2"><span class="lang-ar">٢. هيكل الترقيم</span><span class="lang-en">2. The numbering</span></a>
+    <a href="#a3"><span class="lang-ar">٣. المحتجزات والدفعات</span><span class="lang-en">3. Retention & advances</span></a>
+    <a href="#a4"><span class="lang-ar">٤. التحليل بالمشروع</span><span class="lang-en">4. Analytic by project</span></a>
+    <a href="#a5"><span class="lang-ar">٥. أخطاء شائعة</span><span class="lang-en">5. Common mistakes</span></a>
+  </aside>
+
+  <div class="prose">
+    <p>
+      <span class="lang-ar">شركات المقاولات لا تشبه شركات التجزئة. الإيراد يُعترف به على مراحل، والتكاليف تتوزّع على مشاريع متعددة في وقت واحد، وهناك مبالغ محتجزة لا تُحصّل إلا بعد سنوات. شجرة الحسابات يجب أن تعكس هذا الواقع، وإلا فلن تعرف أبداً ربحية المشروع الحقيقية.</span>
+      <span class="lang-en">Contractors are not retailers. Revenue is recognised in stages, costs spread across several concurrent projects, and there's retained money that won't be collected for years. The chart of accounts must mirror that reality — otherwise you'll never know a project's true profitability.</span>
+    </p>
+
+    <h2 id="a1"><span class="h2-num">01</span><span class="lang-ar">المبدأ: المحاسبة تجيب على سؤال واحد</span><span class="lang-en">Principle: accounting answers one question</span></h2>
+    <p>
+      <span class="lang-ar">قبل أي ترقيم، اسأل: «هل كل مشروع رابح؟». إذا كانت شجرة الحسابات لا تستطيع الإجابة بسهولة، فهي خاطئة. كل قرار في التصميم يجب أن يخدم هذا الوضوح.</span>
+      <span class="lang-en">Before any numbering, ask: "Is each project profitable?" If the chart of accounts can't answer that easily, it's wrong. Every design decision should serve that clarity.</span>
+    </p>
+    <div class="callout-box">
+      <span class="callout-kicker"><span class="lang-ar">المفتاح</span><span class="lang-en">The key</span></span>
+      <p><span class="lang-ar">في أودو، ربحية المشروع لا تأتي من شجرة الحسابات وحدها، بل من <strong>الحسابات التحليلية (Analytic Accounts)</strong>. أبقِ الشجرة الرئيسية بسيطة، وضع التفصيل في البُعد التحليلي.</span><span class="lang-en">In Odoo, project profitability comes not from the chart of accounts alone but from <strong>analytic accounts</strong>. Keep the main chart simple and push detail into the analytic dimension.</span></p>
+    </div>
+
+    <h2 id="a2"><span class="h2-num">02</span><span class="lang-ar">هيكل ترقيم نظيف</span><span class="lang-en">A clean numbering structure</span></h2>
+    <p>
+      <span class="lang-ar">أستخدم بنية من خمس مجموعات رئيسية تتوافق مع التصنيف المحاسبي المتعارف عليه:</span>
+      <span class="lang-en">I use a five-class structure aligned with conventional accounting classification:</span>
+    </p>
+    <div class="code-block">1xxxxx  <span class="c-key">Assets</span>        <span class="c-com">// الأصول</span>
+2xxxxx  <span class="c-key">Liabilities</span>   <span class="c-com">// الخصوم</span>
+3xxxxx  <span class="c-key">Equity</span>        <span class="c-com">// حقوق الملكية</span>
+4xxxxx  <span class="c-key">Revenue</span>       <span class="c-com">// الإيرادات</span>
+5xxxxx  <span class="c-key">Cost / Expense</span> <span class="c-com">// التكاليف والمصروفات</span>
+
+<span class="c-com">// Example — contract-specific accounts</span>
+410100  Contract revenue — certified
+210300  Retention payable
+130200  Retention receivable
+510100  Direct project cost — materials
+510200  Direct project cost — subcontractors</div>
+
+    <h2 id="a3"><span class="h2-num">03</span><span class="lang-ar">المحتجزات والدفعات المقدمة</span><span class="lang-en">Retention and advance payments</span></h2>
+    <p>
+      <span class="lang-ar">هذان البندان يميّزان محاسبة المقاولات. المحتجزات (عادة ٥–١٠٪) تبقى مستحقة لسنوات، والدفعات المقدمة من العميل تُسجّل كالتزام يُستهلك تدريجياً مع تقدم العمل.</span>
+      <span class="lang-en">These two items define contracting accounting. Retention (typically 5–10%) stays receivable for years, and customer advances are booked as a liability consumed gradually as work progresses.</span>
+    </p>
+    <ul>
+      <li><span class="lang-ar">حساب منفصل لمحتجزات العملاء (مدينة) ومحتجزات المقاولين من الباطن (دائنة)</span><span class="lang-en">Separate accounts for customer retention (receivable) and subcontractor retention (payable)</span></li>
+      <li><span class="lang-ar">حساب التزام للدفعات المقدمة، يُسوّى مع كل مستخلص</span><span class="lang-en">A liability account for advances, settled against each progress claim</span></li>
+    </ul>
+
+    <h2 id="a4"><span class="h2-num">04</span><span class="lang-ar">البُعد التحليلي لكل مشروع</span><span class="lang-en">An analytic dimension per project</span></h2>
+    <p>
+      <span class="lang-ar">هنا يحدث السحر. كل مشروع يصبح حساباً تحليلياً، وكل قيد تكلفة أو إيراد يُربط به. عندها تستطيع إصدار قائمة دخل لكل مشروع على حدة دون إنشاء عشرات الحسابات المكررة.</span>
+      <span class="lang-en">This is where the magic happens. Each project becomes an analytic account, and every cost or revenue entry is tagged to it. You can then produce a P&amp;L per project without creating dozens of duplicate ledger accounts.</span>
+    </p>
+    <div class="article-stats">
+      <div><span class="s-num">~45</span><span class="s-lab"><span class="lang-ar">حساب رئيسي</span><span class="lang-en">main accounts</span></span></div>
+      <div><span class="s-num">∞</span><span class="s-lab"><span class="lang-ar">مشاريع تحليلية</span><span class="lang-en">analytic projects</span></span></div>
+      <div><span class="s-num">1</span><span class="s-lab"><span class="lang-ar">تقرير ربحية</span><span class="lang-en">profitability report</span></span></div>
+    </div>
+
+    <h2 id="a5"><span class="h2-num">05</span><span class="lang-ar">أخطاء شائعة أتجنّبها</span><span class="lang-en">Common mistakes I avoid</span></h2>
+    <ul>
+      <li><span class="lang-ar"><strong>حساب لكل مشروع:</strong> ينتفخ دليل الحسابات لمئات البنود ويصبح غير قابل للإدارة. استخدم التحليلي بدلاً منه.</span><span class="lang-en"><strong>An account per project:</strong> bloats the CoA into hundreds of lines and becomes unmanageable. Use analytic instead.</span></li>
+      <li><span class="lang-ar"><strong>خلط التكلفة المباشرة بالعامة:</strong> افصل دائماً تكاليف المشروع المباشرة عن المصاريف الإدارية.</span><span class="lang-en"><strong>Mixing direct and overhead cost:</strong> always separate direct project cost from administrative overhead.</span></li>
+      <li><span class="lang-ar"><strong>تجاهل ZATCA:</strong> تأكد أن حسابات الضريبة مهيأة للفوترة الإلكترونية من اليوم الأول.</span><span class="lang-en"><strong>Ignoring ZATCA:</strong> make sure tax accounts are wired for e-invoicing from day one.</span></li>
+    </ul>
+    <p>
+      <span class="lang-ar">شجرة حسابات جيدة لا تُلاحَظ — تعمل بصمت وتجيب على أسئلة الإدارة فوراً. أما الشجرة السيئة فتتحوّل إلى مشروع إعادة هيكلة مكلف بعد عامين.</span>
+      <span class="lang-en">A good chart of accounts goes unnoticed — it works quietly and answers management's questions instantly. A bad one becomes an expensive restructuring project two years later.</span>
+    </p>
+  </div>
+</section>
+
+<section class="article-foot">
+  <div class="wrap">
+    <div class="article-cta">
+      <span class="label">§ <span class="lang-ar">شركة مقاولات؟</span><span class="lang-en">Run a contracting firm?</span></span>
+      <h2><span class="lang-ar">لنبنِ شجرة حسابات تجيب على أسئلتك.</span><span class="lang-en">Let's build a CoA that answers your questions.</span></h2>
+      <p><span class="lang-ar">جلسة تشخيصية مجانية لمراجعة هيكلك المحاسبي الحالي وتحديد الفجوات.</span><span class="lang-en">A free diagnostic call to review your current accounting structure and spot the gaps.</span></p>
+      <a class="btn" href="contact.html"><span class="lang-ar">احجز الجلسة</span><span class="lang-en">Book the call</span><span class="arrow">↗</span></a>
+    </div>
+
+    <nav class="article-nav">
+      <a class="prev" href="article-upgrade.html">
+        <span class="an-dir">← <span class="lang-ar">السابق</span><span class="lang-en">Previous</span></span>
+        <span class="an-title"><span class="lang-ar">ترقية أودو v15 → v17</span><span class="lang-en">Upgrading Odoo v15 → v17</span></span>
+      </a>
+      <a class="next" href="article-zatca.html">
+        <span class="an-dir"><span class="lang-ar">التالي</span><span class="lang-en">Next</span> →</span>
+        <span class="an-title"><span class="lang-ar">دمج ZATCA Phase 2</span><span class="lang-en">Integrating ZATCA Phase 2</span></span>
+      </a>
+    </nav>
+  </div>
+</section>
+</article>
+
+<div id="site-footer"></div>
+
+<script src="assets/shared.js"></script>
+<script src="assets/partials.js"></script>
+</body>
+</html>

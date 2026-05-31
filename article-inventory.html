@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Multi-location stock — Ibrahim Abu Haraz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<link rel="stylesheet" href="assets/pages.css" />
+<link rel="stylesheet" href="assets/article.css" />
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<article>
+<section class="article-head" data-screen-label="01 Article Head">
+  <div class="wrap">
+    <a href="articles.html" class="article-back">
+      <span>←</span>
+      <span class="lang-ar">كل الملاحظات</span><span class="lang-en">All notes</span>
+    </a>
+    <div class="article-tagrow">
+      <span class="note-cat">INVENTORY</span>
+      <span class="sep">/</span>
+      <span>2025 · 09 · 08</span>
+      <span class="sep">/</span>
+      <span class="lang-ar">قراءة 6 دقائق</span><span class="lang-en">6 min read</span>
+    </div>
+    <h1 class="article-title">
+      <span class="lang-ar">المخزون متعدد المواقع: متى تستخدم المستودعات مقابل المواقع</span>
+      <span class="lang-en">Multi-location stock: when to use warehouses vs. locations</span>
+    </h1>
+    <p class="article-standfirst">
+      <span class="lang-ar">أكثر خطأ شائع في إعداد المخزون هو الخلط بين المستودع والموقع. التمييز الصحيح من البداية يوفّر شهوراً من إعادة الهيكلة.</span>
+      <span class="lang-en">The most common inventory-setup mistake is conflating warehouses with locations. Getting the distinction right early saves months of restructuring.</span>
+    </p>
+    <div class="article-byline">
+      <span class="portrait"><img src="assets/portrait.png" alt="Ibrahim Abu Haraz" width="40" height="40" /></span>
+      <span><b>Ibrahim Abu Haraz</b> · <span class="lang-ar">مستشار أودو</span><span class="lang-en">ERP Consultant</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap article-body">
+  <aside class="article-toc">
+    <span class="label">/ <span class="lang-ar">المحتوى</span><span class="lang-en">On this page</span></span>
+    <a href="#a1"><span class="lang-ar">١. التعريفان</span><span class="lang-en">1. The definitions</span></a>
+    <a href="#a2"><span class="lang-ar">٢. متى مستودع جديد</span><span class="lang-en">2. When a new warehouse</span></a>
+    <a href="#a3"><span class="lang-ar">٣. تسلسل المواقع</span><span class="lang-en">3. Location hierarchy</span></a>
+    <a href="#a4"><span class="lang-ar">٤. قواعد التوجيه</span><span class="lang-en">4. Routing rules</span></a>
+  </aside>
+
+  <div class="prose">
+    <p>
+      <span class="lang-ar">«نحتاج خمسة مستودعات» — هذه أول جملة أسمعها، وغالباً تكون خاطئة. في أودو، المستودع كيان كبير له عنوان وقواعد توجيه خاصة، بينما الموقع مجرد رفّ أو منطقة داخله. الخلط بينهما يؤدي إلى نظام بطيء ومعقّد بلا داعٍ.</span>
+      <span class="lang-en">"We need five warehouses" — that's the first sentence I hear, and it's usually wrong. In Odoo a warehouse is a large entity with an address and its own routing rules, while a location is just a shelf or zone inside it. Conflating them produces a slow, needlessly complex system.</span>
+    </p>
+
+    <h2 id="a1"><span class="h2-num">01</span><span class="lang-ar">التعريفان بدقة</span><span class="lang-en">The two definitions, precisely</span></h2>
+    <ul>
+      <li><span class="lang-ar"><strong>المستودع (Warehouse):</strong> موقع فيزيائي مستقل بعنوان خاص وعمليات استلام/تسليم خاصة به.</span><span class="lang-en"><strong>Warehouse:</strong> an independent physical site with its own address and its own receipt / delivery operations.</span></li>
+      <li><span class="lang-ar"><strong>الموقع (Location):</strong> تقسيم داخلي — رفّ، ممر، منطقة جودة، أو منطقة تالف — داخل مستودع واحد.</span><span class="lang-en"><strong>Location:</strong> an internal subdivision — a shelf, aisle, quality zone, or scrap area — inside a single warehouse.</span></li>
+    </ul>
+    <div class="callout-box">
+      <span class="callout-kicker"><span class="lang-ar">السؤال الحاسم</span><span class="lang-en">The deciding question</span></span>
+      <p><span class="lang-ar">هل المكانان لهما عنوانان مختلفان وعمليات شحن مستقلة؟ إن كان الجواب لا، فهما موقعان داخل مستودع واحد — وليسا مستودعين.</span><span class="lang-en">Do the two places have different addresses and independent shipping operations? If not, they're two locations inside one warehouse — not two warehouses.</span></p>
+    </div>
+
+    <h2 id="a2"><span class="h2-num">02</span><span class="lang-ar">متى تنشئ مستودعاً جديداً فعلاً</span><span class="lang-en">When you genuinely need a new warehouse</span></h2>
+    <ul>
+      <li><span class="lang-ar">موقع جغرافي مختلف يستقبل ويشحن بشكل مستقل</span><span class="lang-en">A different geographic site that receives and ships independently</span></li>
+      <li><span class="lang-ar">حاجة لتقارير مخزون وقيمة منفصلة لكل موقع لأغراض إدارية</span><span class="lang-en">A need for separate stock and valuation reporting per site for management</span></li>
+      <li><span class="lang-ar">قواعد توريد مختلفة (مثلاً مستودع يُورّد من آخر)</span><span class="lang-en">Different supply rules (e.g. one warehouse resupplied from another)</span></li>
+    </ul>
+
+    <h2 id="a3"><span class="h2-num">03</span><span class="lang-ar">صمّم تسلسل المواقع بعناية</span><span class="lang-en">Design the location hierarchy carefully</span></h2>
+    <p>
+      <span class="lang-ar">داخل كل مستودع، أبنِ شجرة مواقع منطقية. التسلسل الجيد يجعل الجرد والتتبع بالباركود سلِساً:</span>
+      <span class="lang-en">Inside each warehouse, build a logical location tree. A good hierarchy makes counts and barcode tracking effortless:</span>
+    </p>
+    <div class="code-block">WH/Stock
+ ├── WH/Stock/Zone-A
+ │    ├── A-01-01   <span class="c-com">// aisle-bay-level</span>
+ │    └── A-01-02
+ ├── WH/Stock/Zone-B
+ ├── WH/Quality     <span class="c-com">// incoming QC hold</span>
+ └── WH/Scrap       <span class="c-com">// damaged goods</span></div>
+
+    <h2 id="a4"><span class="h2-num">04</span><span class="lang-ar">قواعد التوجيه تحرّك كل شيء</span><span class="lang-en">Routing rules move everything</span></h2>
+    <p>
+      <span class="lang-ar">بعد ضبط المواقع، قواعد التوجيه (Routes) هي ما يحدد كيف ينتقل المخزون: استلام بخطوة واحدة أو خطوتين، توريد بين المستودعات، أو تصنيع. ابدأ بالأبسط دائماً — خطوة واحدة — ولا تعقّد إلا عند الحاجة الفعلية.</span>
+      <span class="lang-en">Once locations are set, routes determine how stock moves: one-step or two-step receipts, inter-warehouse resupply, or manufacturing. Always start with the simplest — one step — and only add complexity when there's a real need.</span>
+    </p>
+    <div class="article-stats">
+      <div><span class="s-num">1</span><span class="s-lab"><span class="lang-ar">مستودع غالباً يكفي</span><span class="lang-en">warehouse, often</span></span></div>
+      <div><span class="s-num">N</span><span class="s-lab"><span class="lang-ar">مواقع داخلية</span><span class="lang-en">internal locations</span></span></div>
+      <div><span class="s-num">→</span><span class="s-lab"><span class="lang-ar">ابدأ بسيطاً</span><span class="lang-en">start simple</span></span></div>
+    </div>
+    <p>
+      <span class="lang-ar">القاعدة التي أكررها لكل عميل: أنشئ أقل عدد ممكن من المستودعات، وأكبر عدد منطقي من المواقع. النظام البسيط الذي يفهمه الجميع أفضل من نظام «مثالي» لا يستطيع أحد تشغيله.</span>
+      <span class="lang-en">The rule I repeat to every client: create as few warehouses as possible and as many sensible locations as you need. A simple system everyone understands beats a "perfect" one nobody can operate.</span>
+    </p>
+  </div>
+</section>
+
+<section class="article-foot">
+  <div class="wrap">
+    <div class="article-cta">
+      <span class="label">§ <span class="lang-ar">مخزون معقّد؟</span><span class="lang-en">Complex inventory?</span></span>
+      <h2><span class="lang-ar">لنبسّط إعداد المخزون لديك.</span><span class="lang-en">Let's simplify your inventory setup.</span></h2>
+      <p><span class="lang-ar">جلسة تشخيصية مجانية لمراجعة هيكل مستودعاتك ومواقعك واقتراح أبسط بنية تخدم احتياجك.</span><span class="lang-en">A free diagnostic call to review your warehouse and location structure and propose the simplest design that fits.</span></p>
+      <a class="btn" href="contact.html"><span class="lang-ar">احجز الجلسة</span><span class="lang-en">Book the call</span><span class="arrow">↗</span></a>
+    </div>
+
+    <nav class="article-nav">
+      <a class="prev" href="article-zatca.html">
+        <span class="an-dir">← <span class="lang-ar">السابق</span><span class="lang-en">Previous</span></span>
+        <span class="an-title"><span class="lang-ar">دمج ZATCA Phase 2</span><span class="lang-en">Integrating ZATCA Phase 2</span></span>
+      </a>
+      <a class="next" href="article-why-fail.html">
+        <span class="an-dir"><span class="lang-ar">التالي</span><span class="lang-en">Next</span> →</span>
+        <span class="an-title"><span class="lang-ar">لماذا تفشل تطبيقات ERP</span><span class="lang-en">Why ERP rollouts fail</span></span>
+      </a>
+    </nav>
+  </div>
+</section>
+</article>
+
+<div id="site-footer"></div>
+
+<script src="assets/shared.js"></script>
+<script src="assets/partials.js"></script>
+</body>
+</html>
