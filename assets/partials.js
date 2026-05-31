@@ -2,10 +2,10 @@
 
 (function () {
   const PAGES = [
-    { href: "index.html",    ar: "الرئيسية",    en: "Home" },
-    { href: "services.html", ar: "الخدمات",    en: "Services" },
-    { href: "about.html",    ar: "نبذة",        en: "About" },
-    { href: "contact.html",  ar: "تواصل",      en: "Contact" },
+    { href: "index.html",    ar: "الرئيسية", en: "Home" },
+    { href: "services.html", ar: "الخدمات",  en: "Services" },
+    { href: "about.html",    ar: "نبذة",     en: "About" },
+    { href: "contact.html",  ar: "تواصل",    en: "Contact" },
   ];
 
   function currentFile() {
@@ -32,7 +32,8 @@
     </nav>
     <div class="nav-meta">
       <span class="status-dot">
-        <span class="lang-ar">متاح للمشاريع</span><span class="lang-en">Available</span>
+        <span class="lang-ar">متاح للمشاريع</span>
+        <span class="lang-en">Available</span>
       </span>
       <div class="lang-toggle" role="group" aria-label="Language">
         <button data-lang="ar" aria-pressed="true">ع</button>
@@ -96,7 +97,6 @@
 </footer>`;
   }
 
-  // Auto-inject if mount points exist
   document.addEventListener("DOMContentLoaded", () => {
     const h = document.getElementById("site-header");
     const f = document.getElementById("site-footer");
