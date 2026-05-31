@@ -1,58 +1,35 @@
-# Ibrahim Abu Haraz — Personal Website / الموقع الشخصي
+# Ibrahim Abu Haraz — Website (self-contained build)
+# الموقع الشخصي — نسخة مكتفية بذاتها
 
-موقع شخصي متعدد الصفحات (عربي/إنجليزي) لمستشار أنظمة أودو.
-A bilingual (Arabic/English) multi-page personal website for an Odoo ERP consultant.
+كل صفحة في هذا المجلد **ملف واحد مكتمل** — التنسيقات والخطوط والصورة كلها مدمجة بداخله.
+لا حاجة لمجلد `assets`. هذا يحل مشكلة ظهور الموقع «كهيكل بدون ألوان» على GitHub Pages.
 
----
-
-## المحتوى / Contents
-
-```
-index.html            الرئيسية / Home
-services.html         الخدمات / Services
-about.html            نبذة / About
-articles.html         المقالات / Notes index
-contact.html          تواصل / Contact (+ working form)
-article-*.html        6 full articles / ٦ مقالات كاملة
-assets/               CSS, JS, portrait.png
-```
-
-الموقع بالكامل HTML/CSS/JS ثابت — لا يحتاج خادماً أو قاعدة بيانات.
-Entirely static HTML/CSS/JS — no server or database required.
+Each page here is a **single self-contained file** — all CSS, fonts, and the portrait
+are embedded inside it. No `assets` folder needed. This fixes the "unstyled skeleton"
+problem on GitHub Pages.
 
 ---
 
-## النشر / Publishing
+## النشر على GitHub Pages / Publish on GitHub Pages
 
-ارفع **محتويات هذا المجلد** (وليس المجلد نفسه) إلى أي استضافة. الصفحة الرئيسية هي `index.html`.
-Upload the **contents of this folder** (not the folder itself) to any host. The home page is `index.html`.
+1. ارفع **كل ملفات هذا المجلد** إلى المستودع (root) — including the `.nojekyll` file.
+   Upload **all files in this folder** to the repo root.
+2. Settings → Pages → Source = `main` branch, folder = `/ (root)` → Save.
+3. افتح / open: `https://<username>.github.io/<repo>/`
 
-خيارات مجانية سهلة / Easy free options:
+> تأكد أن `index.html` و `.nojekyll` في جذر المستودع مباشرة، لا داخل مجلد فرعي.
+> Make sure `index.html` and `.nojekyll` sit at the repo root, not inside a subfolder.
 
-- **Netlify** — اسحب المجلد إلى app.netlify.com/drop / drag the folder onto app.netlify.com/drop
-- **Cloudflare Pages** / **GitHub Pages** / **Vercel** — اربط مجلداً أو مستودعاً / connect a folder or repo
-- أي استضافة تدعم HTML (cPanel, ...) — ارفع عبر FTP إلى مجلد public_html
+الروابط بين الصفحات تعمل تلقائياً ما دامت كل الملفات في نفس المجلد.
+Inter-page links work automatically as long as all files stay in the same folder.
 
 ---
 
 ## نموذج التواصل / Contact form
 
-يعمل النموذج فوراً عبر **واتساب** و**البريد**.
-The form works out of the box via **WhatsApp** and **Email**.
-
-لتفعيل وصول الطلبات لصندوق بريدك مباشرة / To deliver submissions straight to your inbox:
-
-1. أنشئ نموذجاً مجانياً على / create a free form at https://formspree.io
-2. افتح `assets/contact-form.js` وضع الرابط في أول سطر / open `assets/contact-form.js` and set the first line:
-   ```js
-   const FORMSPREE_ENDPOINT = "https://formspree.io/f/XXXXXX";
-   ```
-
----
-
-## الصورة الشخصية / Portrait
-
-الصورة في `assets/portrait.png`. لاستبدالها، ضع صورة مربعة بنفس الاسم.
-The portrait is `assets/portrait.png`. To replace it, drop a square image with the same name.
+يعمل عبر واتساب والبريد فوراً. لتفعيل Formspree لاحقاً عدّل المصدر `contact.html`
+في مجلد المشروع الأصلي ثم أعد البناء.
+Works via WhatsApp & Email out of the box. To enable Formspree later, edit the
+source `contact.html` in the original project and rebuild.
 
 © Ibrahim Abu Haraz
