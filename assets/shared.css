@@ -44,20 +44,8 @@ html, body {
 }
 
 body {
-  /* Faint vertical column grid as a design element */
-  background-image:
-    linear-gradient(to right,
-      transparent 0,
-      transparent calc(100% / 12 - 1px),
-      var(--line-2) calc(100% / 12 - 1px),
-      var(--line-2) calc(100% / 12),
-      transparent calc(100% / 12));
-  background-size: calc(100% / 12) 100%;
-  background-position: 0 0;
-  background-repeat: repeat-x;
+  background-image: none;
 }
-
-@media (max-width: 900px) { body { background-image: none; } }
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
