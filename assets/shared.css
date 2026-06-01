@@ -31,6 +31,8 @@
 
 * { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -78,9 +80,11 @@ html[lang="ar"] .lang-ar.block { display: block; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(244, 246, 248, 0.92);
-  backdrop-filter: blur(8px);
+  background: rgba(244, 246, 248, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
 }
 .topbar .row {
   display: flex;
@@ -253,7 +257,7 @@ p { margin: 0; }
 .btn-ghost {
   background: transparent;
   color: var(--ink);
-  border: 1px solid var(--line);
+  border: 1px solid #cfd4d8;
 }
 .btn-ghost:hover { background: var(--bg-2); border-color: var(--ink); color: var(--ink); }
 
@@ -373,23 +377,21 @@ footer.site .bottom {
   filter: saturate(0.95) contrast(1.02);
 }
 .portrait::before {
-  /* fine outer ring */
   content: "";
   position: absolute;
   inset: -6px;
-  border: 1px solid var(--line);
+  border: 2px solid #356b7d;
   border-radius: 50%;
   pointer-events: none;
+  box-shadow: 0 0 0 4px rgba(53,107,125,0.15), 0 0 40px rgba(53,107,125,0.1);
 }
 .portrait::after {
-  /* dashed offset arc to keep the technical/grid vocabulary */
   content: "";
   position: absolute;
-  inset: -14px;
-  border: 1px dashed rgba(53, 107, 125, 0.35);
+  inset: -16px;
+  border: 1px dashed rgba(53,107,125,0.4);
   border-radius: 50%;
   pointer-events: none;
-  opacity: 0.7;
 }
 .portrait-meta {
   position: absolute;

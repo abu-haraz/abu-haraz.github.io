@@ -5,6 +5,7 @@
   padding-top: clamp(40px, 5vw, 64px);
   padding-bottom: 0;
   position: relative;
+  background: radial-gradient(ellipse at 70% 50%, rgba(53,107,125,0.06) 0%, #f4f6f8 65%);
 }
 
 .hero-meta {
@@ -104,7 +105,7 @@ html[dir="rtl"] .display-right { align-items: flex-start; }
 .ticker {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  background: var(--bg);
+  background: #1a2028;
   padding-block: 14px;
   overflow: hidden;
   display: flex;
@@ -119,13 +120,13 @@ html[dir="rtl"] .display-right { align-items: flex-start; }
   font-family: var(--f-mono);
   font-size: 12px;
   letter-spacing: 0.1em;
-  color: var(--ink-2);
+  color: #f4f6f8;
   white-space: nowrap;
   flex-shrink: 0;
   animation: tick 60s linear infinite;
 }
 .ticker-track > span { flex-shrink: 0; }
-.ticker-track > span:nth-child(even) { color: var(--teal); }
+.ticker-track > span:nth-child(even) { color: #356b7d; }
 @keyframes tick {
   from { transform: translateX(0); }
   to { transform: translateX(-100%); }
@@ -157,7 +158,10 @@ html[dir="rtl"] .ticker-track { animation-direction: reverse; }
   transition: background 200ms ease;
   position: relative;
 }
-.svc:hover { background: var(--teal-tint); }
+.svc:hover {
+  background: #e0eff4;
+  transition: background 200ms ease;
+}
 .svc-num {
   font-family: var(--f-mono);
   font-size: 11px;
@@ -346,7 +350,12 @@ html[dir="rtl"] .phase-bullets li::before { content: "← "; }
   transition: background 200ms ease;
   min-height: 88px;
 }
-.tile:hover { background: var(--bg-2); }
+.tile:hover {
+  background: #e0eff4;
+  border-inline-start: 3px solid #356b7d;
+  transform: translateY(-2px);
+  transition: all 200ms ease;
+}
 .tile-num {
   font-family: var(--f-mono);
   font-size: 11px;
@@ -395,22 +404,22 @@ html[dir="rtl"] .phase-bullets li::before { content: "← "; }
 .quote-mark {
   font-size: 64px;
   line-height: 0.6;
-  color: var(--teal);
+  color: #356b7d !important;
 }
 .quote blockquote {
   margin: 0;
   font-size: clamp(18px, 1.6vw, 24px);
   line-height: 1.4;
-  color: var(--ink);
+  color: #f4f6f8 !important;
   font-weight: 500;
   text-wrap: pretty;
 }
 .quote figcaption {
   font-family: var(--f-mono);
   font-size: 11px;
-  color: var(--muted);
+  color: rgba(244,246,248,0.6) !important;
   letter-spacing: 0.06em;
-  border-top: 1px dashed var(--line);
+  border-top: 1px dashed rgba(244,246,248,0.2);
   padding-top: 16px;
 }
 
@@ -494,3 +503,61 @@ html[dir="rtl"] .phase-bullets li::before { content: "← "; }
   margin-top: 16px;
   position: relative;
 }
+
+/* ============================================================
+   SECTION-SPECIFIC OVERRIDES
+   ============================================================ */
+
+/* Services — dark gradient */
+#services { background: linear-gradient(135deg, #1a2028 0%, #235261 100%); }
+#services .svc-grid {
+  border-top-color: rgba(244,246,248,0.18);
+  border-inline-start-color: rgba(244,246,248,0.18);
+}
+#services .svc {
+  background: rgba(255,255,255,0.03);
+  border-inline-end-color: rgba(244,246,248,0.18);
+  border-bottom-color: rgba(244,246,248,0.18);
+}
+#services .svc p { color: rgba(244,246,248,0.70); }
+#services .svc:hover { background: rgba(224,239,244,0.12); }
+
+/* Process — gradient */
+/* (background set via inline style on the element) */
+
+/* Quotes grid — visible borders on dark section */
+.section-dark .quotes-grid {
+  border-top-color: rgba(244,246,248,0.18);
+  border-inline-start-color: rgba(244,246,248,0.18);
+}
+.section-dark .quote {
+  border-inline-end-color: rgba(244,246,248,0.18);
+  border-bottom-color: rgba(244,246,248,0.18);
+}
+
+/* CTA — dark gradient + light button */
+.section-dark.cta { border-top: 0; }
+.section-dark .cta-card {
+  background: transparent;
+  border-color: rgba(244,246,248,0.18);
+}
+.section-dark .cta-card::before { border-color: rgba(244,246,248,0.2); }
+.section-dark .cta-meta { color: rgba(244,246,248,0.6); }
+.section-dark.cta .btn:not(.btn-ghost) {
+  background: #f4f6f8;
+  color: #1a2028;
+  border-color: #f4f6f8;
+}
+.section-dark.cta .btn-ghost {
+  border-color: rgba(244,246,248,0.4);
+  color: rgba(244,246,248,0.8);
+}
+.section-dark.cta .btn-ghost:hover {
+  background: rgba(244,246,248,0.1);
+  border-color: rgba(244,246,248,0.6);
+  color: #f4f6f8;
+}
+
+/* Venture — gradient + Arabic title glow */
+#venture { background: linear-gradient(135deg, #1a2028 0%, #1e2d3a 50%, #235261 100%); }
+#venture .h-display { text-shadow: 0 0 60px rgba(53,107,125,0.4); }
