@@ -5,18 +5,18 @@
 
 :root {
   /* Color tokens */
-  --bg:        oklch(97.5% 0.005 220);
-  --bg-2:      oklch(95% 0.006 220);
-  --ink:       oklch(18% 0.018 230);
-  --ink-2:     oklch(32% 0.018 225);
-  --muted:     oklch(52% 0.012 225);
-  --line:      oklch(86% 0.008 220);
-  --line-2:    oklch(91% 0.006 220);
-  --teal:      oklch(42% 0.07 200);
-  --teal-deep: oklch(32% 0.06 205);
-  --teal-tint: oklch(94% 0.018 200);
-  --amber:     oklch(70% 0.13 70);
-  --green:     oklch(62% 0.13 155);
+  --bg:        #f4f6f8;
+  --bg-2:      #edf0f4;
+  --ink:       #1a2028;
+  --ink-2:     #3a4655;
+  --muted:     #697585;
+  --line:      #d2d9e2;
+  --line-2:    #e3e8ef;
+  --teal:      #356b7d;
+  --teal-deep: #264f5c;
+  --teal-tint: #e4f2f5;
+  --amber:     #c4853a;
+  --green:     #3a9464;
 
   /* Type */
   --f-sans: "IBM Plex Sans Arabic", "IBM Plex Sans", system-ui, sans-serif;
@@ -90,7 +90,7 @@ html[lang="ar"] .lang-ar.block { display: block; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in oklab, var(--bg) 92%, transparent);
+  background: rgba(244, 246, 248, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
@@ -174,7 +174,7 @@ nav.primary a[aria-current="page"]::before {
   width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--green) 25%, transparent);
+  box-shadow: 0 0 0 3px rgba(58, 148, 100, 0.25);
 }
 
 .lang-toggle {
@@ -398,7 +398,7 @@ footer.site .bottom {
   content: "";
   position: absolute;
   inset: -14px;
-  border: 1px dashed color-mix(in oklab, var(--teal) 35%, transparent);
+  border: 1px dashed rgba(53, 107, 125, 0.35);
   border-radius: 50%;
   pointer-events: none;
   opacity: 0.7;
@@ -416,7 +416,7 @@ footer.site .bottom {
   white-space: nowrap;
 }
 .portrait-meta.tl { top: -8px; inset-inline-start: -8px; }
-.portrait-meta.br { bottom: -8px; inset-inline-end: -8px; color: var(--teal); border-color: color-mix(in oklab, var(--teal) 30%, var(--line)); }
+.portrait-meta.br { bottom: -8px; inset-inline-end: -8px; color: var(--teal); border-color: #a3b8c4; }
 
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity 600ms ease, transform 600ms ease; }

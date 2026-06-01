@@ -30,7 +30,7 @@
   letter-spacing: 0.06em;
   color: var(--muted);
 }
-.article-tagrow .note-cat { color: var(--teal); border-color: color-mix(in oklab, var(--teal) 30%, var(--line)); }
+.article-tagrow .note-cat { color: var(--teal); border-color: #a3b8c4; }
 .article-tagrow .sep { color: var(--line); }
 
 .article-title {
@@ -196,7 +196,7 @@ html[dir="rtl"] .callout-box { border-inline-start: 1px solid var(--line); borde
   font-size: 13px;
   line-height: 1.7;
   background: var(--ink);
-  color: color-mix(in oklab, var(--bg) 88%, transparent);
+  color: rgba(244, 246, 248, 0.88);
   padding: 20px 24px;
   overflow-x: auto;
   white-space: pre;
@@ -204,8 +204,8 @@ html[dir="rtl"] .callout-box { border-inline-start: 1px solid var(--line); borde
   text-align: left;
   letter-spacing: 0.01em;
 }
-.code-block .c-com { color: oklch(60% 0.05 200); }
-.code-block .c-key { color: oklch(72% 0.12 200); }
+.code-block .c-com { color: #5c8a8c; }
+.code-block .c-key { color: #16bbc2; }
 
 /* Pull stat row */
 .article-stats {
