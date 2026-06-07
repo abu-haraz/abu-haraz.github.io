@@ -10,18 +10,67 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/shared.css" />
 <link rel="stylesheet" href="assets/home.css" />
+<style>
+/* ── Hero dark gradient ── */
+.hero {
+  background: linear-gradient(135deg, #1a2028 0%, #1e2d3a 40%, #235261 70%, #356b7d 100%);
+}
+.hero .h-display { color: #f4f6f8; }
+.hero .label { color: rgba(244,246,248,0.6); }
+.hero .lede { color: rgba(244,246,248,0.85); }
+.hero .callout-val { color: #f4f6f8; }
+.hero .callout-cap { color: rgba(244,246,248,0.6); }
+.hero .mono { color: rgba(244,246,248,0.7); }
+.hero .hero-meta { background: rgba(255,255,255,0.05); border-color: rgba(244,246,248,0.15); }
+.hero .meta-cell { border-color: rgba(244,246,248,0.12); color: rgba(244,246,248,0.7); }
+.hero .label-num { color: #356b7d; }
+.hero .hero-tag { border-color: rgba(244,246,248,0.15); }
+.hero .ticker { background: rgba(0,0,0,0.25); border-color: rgba(244,246,248,0.1); }
+.hero .ticker-track { color: rgba(244,246,248,0.7); }
+.hero .ticker-track > span:nth-child(even) { color: #356b7d; }
+
+/* Portrait on dark */
+.hero .portrait::before { border-color: #356b7d; box-shadow: 0 0 0 4px rgba(53,107,125,0.2), 0 0 40px rgba(53,107,125,0.15); }
+.hero .portrait::after { border-color: rgba(53,107,125,0.4); }
+.hero .portrait-meta { background: rgba(26,32,40,0.85); color: rgba(244,246,248,0.8); border-color: rgba(244,246,248,0.2); }
+.hero .portrait-meta.br { color: #38a070; border-color: rgba(56,160,112,0.4); }
+
+/* Founder line */
+.founder-line { color: #356b7d !important; }
+
+/* Hero CTA buttons on dark */
+.hero .btn { background: #f4f6f8; color: #1a2028; border-color: #f4f6f8; }
+.hero .btn:hover { background: #356b7d; color: #f4f6f8; border-color: #356b7d; }
+.hero .btn-ghost { background: transparent; color: #f4f6f8; border-color: rgba(244,246,248,0.4); }
+.hero .btn-ghost:hover { background: rgba(244,246,248,0.1); border-color: #f4f6f8; color: #f4f6f8; }
+
+/* Services gradient */
+#services { background: linear-gradient(135deg, #1a2028 0%, #235261 100%) !important; }
+
+/* Quotes fix */
+.quote blockquote { color: #f4f6f8 !important; }
+.quote-mark { color: #356b7d !important; }
+.quote figcaption { color: rgba(244,246,248,0.55) !important; }
+.quote { border-color: rgba(244,246,248,0.18) !important; }
+
+/* Venture gradient */
+#venture { background: linear-gradient(135deg, #1a2028 0%, #1e2d3a 50%, #235261 100%) !important; }
+#venture .h-display { text-shadow: 0 0 60px rgba(53,107,125,0.4); }
+
+/* Stack tiles hover */
+.tile { transition: all 200ms ease; }
+.tile:hover { background: #e0eff4; border-inline-start: 3px solid #356b7d; transform: translateY(-2px); }
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+</style>
 </head>
 <body>
 
 <div id="site-header"></div>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
 <section class="hero" data-screen-label="01 Hero">
   <div class="wrap">
-
-    <!-- Meta strip -->
     <div class="hero-meta">
       <div class="meta-cell">
         <span class="label-num">N°</span>
@@ -44,7 +93,6 @@
       </div>
     </div>
 
-    <!-- Display -->
     <div class="hero-display">
       <div class="display-left">
         <p class="label" style="margin-bottom: 20px;">
@@ -55,7 +103,7 @@
           <span class="lang-ar">إبراهيم<br/>أبو&nbsp;حراز.</span>
           <span class="lang-en">Ibrahim<br/>Abu&nbsp;Haraz.</span>
         </h1>
-        <p class="mono" style="margin-top:18px; color:var(--teal); font-size:13px; letter-spacing:.04em;">مؤسس أقطاب · Founder of AQTAB</p>
+        <p class="mono founder-line" style="margin-top:18px; font-size:13px; letter-spacing:.04em;">مؤسس أقطاب · Founder of AQTAB</p>
       </div>
       <div class="display-right">
         <div class="portrait lg" aria-label="Ibrahim Abu Haraz">
@@ -92,7 +140,6 @@
       </div>
     </div>
 
-    <!-- Tagline + CTA row -->
     <div class="hero-tag">
       <p class="lede">
         <span class="lang-ar">
@@ -115,7 +162,6 @@
       </div>
     </div>
 
-    <!-- Ticker -->
     <div class="ticker">
       <div class="ticker-track">
         <span>ODOO v17</span><span>·</span>
@@ -146,13 +192,9 @@
         <span>API INTEGRATIONS</span><span>·</span>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ============================================================
-     SERVICES
-     ============================================================ -->
 <section class="section section-dark" id="services" data-screen-label="02 Services">
   <div class="wrap">
     <div class="section-head">
@@ -172,290 +214,67 @@
         </p>
       </div>
     </div>
-
     <ol class="svc-grid">
-      <li class="svc">
-        <div class="svc-num">01</div>
-        <h3 class="h-3"><span class="lang-ar">تطبيق أودو الكامل</span><span class="lang-en">Odoo Implementation</span></h3>
-        <p><span class="lang-ar">تحليل، تكوين، ترحيل بيانات، تدريب، إطلاق — بمنهجية محددة وجدول زمني واضح.</span>
-           <span class="lang-en">Discovery, configuration, data migration, training, go-live — fixed methodology, clear timeline.</span></p>
-      </li>
-      <li class="svc">
-        <div class="svc-num">02</div>
-        <h3 class="h-3"><span class="lang-ar">استشارات العمليات</span><span class="lang-en">Business Process Consulting</span></h3>
-        <p><span class="lang-ar">رسم الخرائط الإجرائية للحالة الحالية والمستهدفة، تحديد الفجوات، توصيات قابلة للتنفيذ.</span>
-           <span class="lang-en">As-is / to-be process mapping, gap analysis, and recommendations you can actually execute.</span></p>
-      </li>
-      <li class="svc">
-        <div class="svc-num">03</div>
-        <h3 class="h-3"><span class="lang-ar">التدريب والدعم المستمر</span><span class="lang-en">Training & Ongoing Support</span></h3>
-        <p><span class="lang-ar">برامج تدريب مخصصة للمستخدمين النهائيين والإدارة، مع دعم مستمر بعد الإطلاق.</span>
-           <span class="lang-en">Tailored training programmes for end-users and leadership, plus post-go-live retainer support.</span></p>
-      </li>
-      <li class="svc">
-        <div class="svc-num">04</div>
-        <h3 class="h-3"><span class="lang-ar">تطوير وحدات مخصصة</span><span class="lang-en">Custom Module Development</span></h3>
-        <p><span class="lang-ar">عند الحاجة — وحدات بايثون مكتوبة وفق معايير أودو الرسمية، قابلة للترقية.</span>
-           <span class="lang-en">When needed — Python modules written to official Odoo standards, upgrade-safe.</span></p>
-      </li>
-      <li class="svc">
-        <div class="svc-num">05</div>
-        <h3 class="h-3"><span class="lang-ar">التكامل مع أنظمة الطرف الثالث</span><span class="lang-en">Third-Party Integrations</span></h3>
-        <p><span class="lang-ar">ربط البنوك، بوابات الدفع، الشحن، واتساب، وأنظمة الفوترة الحكومية (ZATCA).</span>
-           <span class="lang-en">Banks, payment gateways, shipping, WhatsApp, and government e-invoicing (ZATCA).</span></p>
-      </li>
-      <li class="svc">
-        <div class="svc-num">06</div>
-        <h3 class="h-3"><span class="lang-ar">المخزون والتصنيع</span><span class="lang-en">Inventory & Manufacturing</span></h3>
-        <p><span class="lang-ar">إعداد المستودعات متعددة المواقع، قوائم المواد، أوامر التصنيع، التتبع بالـBarcode.</span>
-           <span class="lang-en">Multi-warehouse setup, BOMs, work orders, routing, and barcode tracking.</span></p>
-      </li>
-      <li class="svc">
-        <div class="svc-num">07</div>
-        <h3 class="h-3"><span class="lang-ar">المحاسبة والمالية</span><span class="lang-en">Accounting & Finance</span></h3>
-        <p><span class="lang-ar">شجرة الحسابات، الضرائب، الفوترة الإلكترونية، تقارير الإدارة وتسويات البنوك.</span>
-           <span class="lang-en">Chart of accounts, taxes, e-invoicing, management reports, and bank reconciliation.</span></p>
-      </li>
-      <li class="svc">
-        <div class="svc-num">08</div>
-        <h3 class="h-3"><span class="lang-ar">المبيعات وإدارة العملاء (CRM)</span><span class="lang-en">CRM & Sales</span></h3>
-        <p><span class="lang-ar">قمع المبيعات، تتبع الفرص، عروض الأسعار، تكامل البريد والواتساب.</span>
-           <span class="lang-en">Pipelines, opportunity tracking, quotations, and email / WhatsApp integration.</span></p>
-      </li>
-      <li class="svc">
-        <div class="svc-num">09</div>
-        <h3 class="h-3"><span class="lang-ar">المتاجر الإلكترونية</span><span class="lang-en">E-Commerce Setup</span></h3>
-        <p><span class="lang-ar">متاجر أودو وShopify المتصلة مباشرة بالمخزون والمحاسبة، مع تدفقات الشحن.</span>
-           <span class="lang-en">Odoo / Shopify storefronts wired into inventory and accounting with shipping flows.</span></p>
-      </li>
+      <li class="svc"><div class="svc-num">01</div><h3 class="h-3"><span class="lang-ar">تطبيق أودو الكامل</span><span class="lang-en">Odoo Implementation</span></h3><p><span class="lang-ar">تحليل، تكوين، ترحيل بيانات، تدريب، إطلاق — بمنهجية محددة وجدول زمني واضح.</span><span class="lang-en">Discovery, configuration, data migration, training, go-live — fixed methodology, clear timeline.</span></p></li>
+      <li class="svc"><div class="svc-num">02</div><h3 class="h-3"><span class="lang-ar">استشارات العمليات</span><span class="lang-en">Business Process Consulting</span></h3><p><span class="lang-ar">رسم الخرائط الإجرائية للحالة الحالية والمستهدفة، تحديد الفجوات، توصيات قابلة للتنفيذ.</span><span class="lang-en">As-is / to-be process mapping, gap analysis, and recommendations you can actually execute.</span></p></li>
+      <li class="svc"><div class="svc-num">03</div><h3 class="h-3"><span class="lang-ar">التدريب والدعم المستمر</span><span class="lang-en">Training & Ongoing Support</span></h3><p><span class="lang-ar">برامج تدريب مخصصة للمستخدمين النهائيين والإدارة، مع دعم مستمر بعد الإطلاق.</span><span class="lang-en">Tailored training programmes for end-users and leadership, plus post-go-live retainer support.</span></p></li>
+      <li class="svc"><div class="svc-num">04</div><h3 class="h-3"><span class="lang-ar">تطوير وحدات مخصصة</span><span class="lang-en">Custom Module Development</span></h3><p><span class="lang-ar">عند الحاجة — وحدات بايثون مكتوبة وفق معايير أودو الرسمية، قابلة للترقية.</span><span class="lang-en">When needed — Python modules written to official Odoo standards, upgrade-safe.</span></p></li>
+      <li class="svc"><div class="svc-num">05</div><h3 class="h-3"><span class="lang-ar">التكامل مع أنظمة الطرف الثالث</span><span class="lang-en">Third-Party Integrations</span></h3><p><span class="lang-ar">ربط البنوك، بوابات الدفع، الشحن، واتساب، وأنظمة الفوترة الحكومية (ZATCA).</span><span class="lang-en">Banks, payment gateways, shipping, WhatsApp, and government e-invoicing (ZATCA).</span></p></li>
+      <li class="svc"><div class="svc-num">06</div><h3 class="h-3"><span class="lang-ar">المخزون والتصنيع</span><span class="lang-en">Inventory & Manufacturing</span></h3><p><span class="lang-ar">إعداد المستودعات متعددة المواقع، قوائم المواد، أوامر التصنيع، التتبع بالـBarcode.</span><span class="lang-en">Multi-warehouse setup, BOMs, work orders, routing, and barcode tracking.</span></p></li>
+      <li class="svc"><div class="svc-num">07</div><h3 class="h-3"><span class="lang-ar">المحاسبة والمالية</span><span class="lang-en">Accounting & Finance</span></h3><p><span class="lang-ar">شجرة الحسابات، الضرائب، الفوترة الإلكترونية، تقارير الإدارة وتسويات البنوك.</span><span class="lang-en">Chart of accounts, taxes, e-invoicing, management reports, and bank reconciliation.</span></p></li>
+      <li class="svc"><div class="svc-num">08</div><h3 class="h-3"><span class="lang-ar">المبيعات وإدارة العملاء (CRM)</span><span class="lang-en">CRM & Sales</span></h3><p><span class="lang-ar">قمع المبيعات، تتبع الفرص، عروض الأسعار، تكامل البريد والواتساب.</span><span class="lang-en">Pipelines, opportunity tracking, quotations, and email / WhatsApp integration.</span></p></li>
+      <li class="svc"><div class="svc-num">09</div><h3 class="h-3"><span class="lang-ar">المتاجر الإلكترونية</span><span class="lang-en">E-Commerce Setup</span></h3><p><span class="lang-ar">متاجر أودو وShopify المتصلة مباشرة بالمخزون والمحاسبة، مع تدفقات الشحن.</span><span class="lang-en">Odoo / Shopify storefronts wired into inventory and accounting with shipping flows.</span></p></li>
     </ol>
   </div>
 </section>
 
-<!-- ============================================================
-     PROCESS
-     ============================================================ -->
 <section class="section" id="process" data-screen-label="03 Process" style="background: linear-gradient(180deg, #e0eff4 0%, #f4f6f8 100%);">
   <div class="wrap">
     <div class="section-head">
-      <div class="meta">
-        <span><b>§ 03</b> · PROCESS</span>
-        <span>05 PHASES</span>
-        <span>8–16 WEEKS · TYP.</span>
-      </div>
+      <div class="meta"><span><b>§ 03</b> · PROCESS</span><span>05 PHASES</span><span>8–16 WEEKS · TYP.</span></div>
       <div class="title">
-        <h2 class="h-1">
-          <span class="lang-ar">منهجية واضحة. مخرجات قابلة للقياس.</span>
-          <span class="lang-en">A clear method. Measurable outputs.</span>
-        </h2>
-        <p class="lede">
-          <span class="lang-ar">كل مشروع يمرّ بخمس مراحل مكتوبة ومتسلسلة. لا مفاجآت في الجدول الزمني ولا في الميزانية.</span>
-          <span class="lang-en">Every engagement runs through five documented phases. No timeline or budget surprises.</span>
-        </p>
+        <h2 class="h-1"><span class="lang-ar">منهجية واضحة. مخرجات قابلة للقياس.</span><span class="lang-en">A clear method. Measurable outputs.</span></h2>
+        <p class="lede"><span class="lang-ar">كل مشروع يمرّ بخمس مراحل مكتوبة ومتسلسلة. لا مفاجآت في الجدول الزمني ولا في الميزانية.</span><span class="lang-en">Every engagement runs through five documented phases. No timeline or budget surprises.</span></p>
       </div>
     </div>
-
     <div class="process-grid">
-      <div class="phase">
-        <div class="phase-head">
-          <span class="phase-num">PHASE 01</span>
-          <span class="phase-weeks">WK 1–2</span>
-        </div>
-        <h3 class="h-3"><span class="lang-ar">الاكتشاف والتحليل</span><span class="lang-en">Discover & Analyse</span></h3>
-        <p><span class="lang-ar">ورش عمل مع الفرق، رسم العمليات الحالية، تحديد الفجوات.</span>
-           <span class="lang-en">Workshops with teams, as-is mapping, gap analysis.</span></p>
-        <ul class="phase-bullets">
-          <li><span class="lang-ar">وثيقة المتطلبات (BRD)</span><span class="lang-en">Business Requirements Doc</span></li>
-          <li><span class="lang-ar">خرائط العمليات</span><span class="lang-en">Process maps</span></li>
-        </ul>
-      </div>
-      <div class="phase">
-        <div class="phase-head">
-          <span class="phase-num">PHASE 02</span>
-          <span class="phase-weeks">WK 2–4</span>
-        </div>
-        <h3 class="h-3"><span class="lang-ar">التصميم والتكوين</span><span class="lang-en">Design & Configure</span></h3>
-        <p><span class="lang-ar">تكوين الوحدات، تصميم سير العمليات، إعداد بيئة الاختبار.</span>
-           <span class="lang-en">Module configuration, workflow design, sandbox environment.</span></p>
-        <ul class="phase-bullets">
-          <li><span class="lang-ar">مستند التصميم الوظيفي</span><span class="lang-en">Functional design doc</span></li>
-          <li><span class="lang-ar">نموذج عمل تجريبي</span><span class="lang-en">Working prototype</span></li>
-        </ul>
-      </div>
-      <div class="phase">
-        <div class="phase-head">
-          <span class="phase-num">PHASE 03</span>
-          <span class="phase-weeks">WK 4–8</span>
-        </div>
-        <h3 class="h-3"><span class="lang-ar">البناء والتكامل</span><span class="lang-en">Build & Integrate</span></h3>
-        <p><span class="lang-ar">تطوير الوحدات المخصصة، التكامل مع الأنظمة الأخرى، نقل البيانات.</span>
-           <span class="lang-en">Custom modules, third-party integrations, data migration.</span></p>
-        <ul class="phase-bullets">
-          <li><span class="lang-ar">بيئة UAT جاهزة</span><span class="lang-en">UAT-ready environment</span></li>
-          <li><span class="lang-ar">سيناريوهات اختبار</span><span class="lang-en">Test scenarios</span></li>
-        </ul>
-      </div>
-      <div class="phase">
-        <div class="phase-head">
-          <span class="phase-num">PHASE 04</span>
-          <span class="phase-weeks">WK 8–10</span>
-        </div>
-        <h3 class="h-3"><span class="lang-ar">التدريب والإطلاق</span><span class="lang-en">Train & Go-Live</span></h3>
-        <p><span class="lang-ar">برامج تدريب للمستخدمين النهائيين، اختبار قبول، إطلاق مباشر.</span>
-           <span class="lang-en">End-user training, acceptance testing, controlled go-live.</span></p>
-        <ul class="phase-bullets">
-          <li><span class="lang-ar">أدلة استخدام بالعربية</span><span class="lang-en">Arabic user manuals</span></li>
-          <li><span class="lang-ar">قاعدة بيانات حية</span><span class="lang-en">Live production DB</span></li>
-        </ul>
-      </div>
-      <div class="phase">
-        <div class="phase-head">
-          <span class="phase-num">PHASE 05</span>
-          <span class="phase-weeks">ONGOING</span>
-        </div>
-        <h3 class="h-3"><span class="lang-ar">التشغيل والتحسين</span><span class="lang-en">Operate & Improve</span></h3>
-        <p><span class="lang-ar">دعم مستمر، تقارير شهرية، توصيات تحسين دورية.</span>
-           <span class="lang-en">Retainer support, monthly reports, continuous improvement.</span></p>
-        <ul class="phase-bullets">
-          <li><span class="lang-ar">SLA متفق عليه</span><span class="lang-en">Agreed SLA</span></li>
-          <li><span class="lang-ar">مراجعة ربع سنوية</span><span class="lang-en">Quarterly review</span></li>
-        </ul>
-      </div>
+      <div class="phase"><div class="phase-head"><span class="phase-num">PHASE 01</span><span class="phase-weeks">WK 1–2</span></div><h3 class="h-3"><span class="lang-ar">الاكتشاف والتحليل</span><span class="lang-en">Discover & Analyse</span></h3><p><span class="lang-ar">ورش عمل مع الفرق، رسم العمليات الحالية، تحديد الفجوات.</span><span class="lang-en">Workshops with teams, as-is mapping, gap analysis.</span></p><ul class="phase-bullets"><li><span class="lang-ar">وثيقة المتطلبات (BRD)</span><span class="lang-en">Business Requirements Doc</span></li><li><span class="lang-ar">خرائط العمليات</span><span class="lang-en">Process maps</span></li></ul></div>
+      <div class="phase"><div class="phase-head"><span class="phase-num">PHASE 02</span><span class="phase-weeks">WK 2–4</span></div><h3 class="h-3"><span class="lang-ar">التصميم والتكوين</span><span class="lang-en">Design & Configure</span></h3><p><span class="lang-ar">تكوين الوحدات، تصميم سير العمليات، إعداد بيئة الاختبار.</span><span class="lang-en">Module configuration, workflow design, sandbox environment.</span></p><ul class="phase-bullets"><li><span class="lang-ar">مستند التصميم الوظيفي</span><span class="lang-en">Functional design doc</span></li><li><span class="lang-ar">نموذج عمل تجريبي</span><span class="lang-en">Working prototype</span></li></ul></div>
+      <div class="phase"><div class="phase-head"><span class="phase-num">PHASE 03</span><span class="phase-weeks">WK 4–8</span></div><h3 class="h-3"><span class="lang-ar">البناء والتكامل</span><span class="lang-en">Build & Integrate</span></h3><p><span class="lang-ar">تطوير الوحدات المخصصة، التكامل مع الأنظمة الأخرى، نقل البيانات.</span><span class="lang-en">Custom modules, third-party integrations, data migration.</span></p><ul class="phase-bullets"><li><span class="lang-ar">بيئة UAT جاهزة</span><span class="lang-en">UAT-ready environment</span></li><li><span class="lang-ar">سيناريوهات اختبار</span><span class="lang-en">Test scenarios</span></li></ul></div>
+      <div class="phase"><div class="phase-head"><span class="phase-num">PHASE 04</span><span class="phase-weeks">WK 8–10</span></div><h3 class="h-3"><span class="lang-ar">التدريب والإطلاق</span><span class="lang-en">Train & Go-Live</span></h3><p><span class="lang-ar">برامج تدريب للمستخدمين النهائيين، اختبار قبول، إطلاق مباشر.</span><span class="lang-en">End-user training, acceptance testing, controlled go-live.</span></p><ul class="phase-bullets"><li><span class="lang-ar">أدلة استخدام بالعربية</span><span class="lang-en">Arabic user manuals</span></li><li><span class="lang-ar">قاعدة بيانات حية</span><span class="lang-en">Live production DB</span></li></ul></div>
+      <div class="phase"><div class="phase-head"><span class="phase-num">PHASE 05</span><span class="phase-weeks">ONGOING</span></div><h3 class="h-3"><span class="lang-ar">التشغيل والتحسين</span><span class="lang-en">Operate & Improve</span></h3><p><span class="lang-ar">دعم مستمر، تقارير شهرية، توصيات تحسين دورية.</span><span class="lang-en">Retainer support, monthly reports, continuous improvement.</span></p><ul class="phase-bullets"><li><span class="lang-ar">SLA متفق عليه</span><span class="lang-en">Agreed SLA</span></li><li><span class="lang-ar">مراجعة ربع سنوية</span><span class="lang-en">Quarterly review</span></li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     CASE STUDIES
-     ============================================================ -->
 <section class="section section-dark" id="cases" data-screen-label="04 Cases">
   <div class="wrap">
     <div class="section-head">
-      <div class="meta">
-        <span><b>§ 04</b> · CASE STUDIES</span>
-        <span>SELECTED · 03 / 11</span>
-        <span>2019–<span data-year>2026</span></span>
-      </div>
+      <div class="meta"><span><b>§ 04</b> · CASE STUDIES</span><span>SELECTED · 03 / 11</span><span>2019–<span data-year>2026</span></span></div>
       <div class="title">
-        <h2 class="h-1">
-          <span class="lang-ar">مشاريع مختارة من أحد عشر تطبيقاً كاملاً.</span>
-          <span class="lang-en">Selected work from eleven full-cycle implementations.</span>
-        </h2>
-        <p class="lede">
-          <span class="lang-ar">عيّنات تمثيلية من قطاعات مختلفة — تتوفر التفاصيل الكاملة عند الطلب وبعد توقيع اتفاقية عدم إفصاح.</span>
-          <span class="lang-en">Representative samples across sectors — full details available on request under NDA.</span>
-        </p>
+        <h2 class="h-1"><span class="lang-ar">مشاريع مختارة من أحد عشر تطبيقاً كاملاً.</span><span class="lang-en">Selected work from eleven full-cycle implementations.</span></h2>
+        <p class="lede"><span class="lang-ar">عيّنات تمثيلية من قطاعات مختلفة — تتوفر التفاصيل الكاملة عند الطلب وبعد توقيع اتفاقية عدم إفصاح.</span><span class="lang-en">Representative samples across sectors — full details available on request under NDA.</span></p>
       </div>
     </div>
-
     <div class="cases-grid">
-
-      <article class="case">
-        <div class="case-tags">
-          <span class="kbd">MANUFACTURING</span>
-          <span class="kbd">KSA</span>
-        </div>
-        <div class="case-thumb">
-          <span class="case-thumb-label">CASE_01 · MFG</span>
-        </div>
-        <div class="case-body">
-          <h3 class="h-3">
-            <span class="lang-ar">مصنع مواد بناء — توحيد ثلاث منشآت إنتاجية</span>
-            <span class="lang-en">Building-materials plant — unifying three production sites</span>
-          </h3>
-          <p>
-            <span class="lang-ar">نقل من نظام محاسبي مستقل إلى منظومة أودو متكاملة تشمل المخزون متعدد المواقع، أوامر التصنيع، وتقارير الإدارة في لوحة واحدة.</span>
-            <span class="lang-en">Migrated from a standalone accounting tool to a unified Odoo stack covering multi-site inventory, manufacturing orders, and consolidated management dashboards.</span>
-          </p>
-          <div class="case-stats">
-            <div><span class="stat-num">3</span><span class="label"><span class="lang-ar">مواقع</span><span class="lang-en">sites</span></span></div>
-            <div><span class="stat-num">12<span class="plus">wk</span></span><span class="label"><span class="lang-ar">إطلاق</span><span class="lang-en">to live</span></span></div>
-            <div><span class="stat-num">−38%</span><span class="label"><span class="lang-ar">إغلاق شهري</span><span class="lang-en">month-close</span></span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case">
-        <div class="case-tags">
-          <span class="kbd">CONTRACTING</span>
-          <span class="kbd">KSA</span>
-        </div>
-        <div class="case-thumb">
-          <span class="case-thumb-label">CASE_02 · CTR</span>
-        </div>
-        <div class="case-body">
-          <h3 class="h-3">
-            <span class="lang-ar">شركة مقاولات — تتبع المشاريع والتكاليف</span>
-            <span class="lang-en">Contracting firm — project & cost tracking</span>
-          </h3>
-          <p>
-            <span class="lang-ar">تطبيق وحدات المشاريع، المشتريات، الفوترة المرحلية، وتكامل مع نظام الحضور الميداني للعمال.</span>
-            <span class="lang-en">Project, procurement and progress-billing modules wired to a field-attendance system for site labour.</span>
-          </p>
-          <div class="case-stats">
-            <div><span class="stat-num">90+</span><span class="label"><span class="lang-ar">مشروع نشط</span><span class="lang-en">live projects</span></span></div>
-            <div><span class="stat-num">+22%</span><span class="label"><span class="lang-ar">دقة الفوترة</span><span class="lang-en">billing accuracy</span></span></div>
-            <div><span class="stat-num">10wk</span><span class="label"><span class="lang-ar">المدة</span><span class="lang-en">duration</span></span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case">
-        <div class="case-tags">
-          <span class="kbd">TRANSPORTATION</span>
-          <span class="kbd">SUDAN → KSA</span>
-        </div>
-        <div class="case-thumb">
-          <span class="case-thumb-label">CASE_03 · TRN</span>
-        </div>
-        <div class="case-body">
-          <h3 class="h-3">
-            <span class="lang-ar">مزود خدمات لوجستية — منصة نقل موحدة</span>
-            <span class="lang-en">Logistics provider — unified transport platform</span>
-          </h3>
-          <p>
-            <span class="lang-ar">إدارة الأسطول، رحلات النقل، فواتير العملاء، وتكامل مع بوابات الدفع وأنظمة تتبع المركبات.</span>
-            <span class="lang-en">Fleet management, trip ledgers, customer invoicing, and integration with payment gateways and vehicle tracking.</span>
-          </p>
-          <div class="case-stats">
-            <div><span class="stat-num">140</span><span class="label"><span class="lang-ar">مركبة</span><span class="lang-en">vehicles</span></span></div>
-            <div><span class="stat-num">2</span><span class="label"><span class="lang-ar">دول</span><span class="lang-en">countries</span></span></div>
-            <div><span class="stat-num">−4d</span><span class="label"><span class="lang-ar">دورة الفوترة</span><span class="lang-en">invoice cycle</span></span></div>
-          </div>
-        </div>
-      </article>
-
+      <article class="case"><div class="case-tags"><span class="kbd">MANUFACTURING</span><span class="kbd">KSA</span></div><div class="case-thumb"><span class="case-thumb-label">CASE_01 · MFG</span></div><div class="case-body"><h3 class="h-3"><span class="lang-ar">مصنع مواد بناء — توحيد ثلاث منشآت إنتاجية</span><span class="lang-en">Building-materials plant — unifying three production sites</span></h3><p><span class="lang-ar">نقل من نظام محاسبي مستقل إلى منظومة أودو متكاملة تشمل المخزون متعدد المواقع، أوامر التصنيع، وتقارير الإدارة في لوحة واحدة.</span><span class="lang-en">Migrated from a standalone accounting tool to a unified Odoo stack covering multi-site inventory, manufacturing orders, and consolidated management dashboards.</span></p><div class="case-stats"><div><span class="stat-num">3</span><span class="label"><span class="lang-ar">مواقع</span><span class="lang-en">sites</span></span></div><div><span class="stat-num">12<span class="plus">wk</span></span><span class="label"><span class="lang-ar">إطلاق</span><span class="lang-en">to live</span></span></div><div><span class="stat-num">−38%</span><span class="label"><span class="lang-ar">إغلاق شهري</span><span class="lang-en">month-close</span></span></div></div></div></article>
+      <article class="case"><div class="case-tags"><span class="kbd">CONTRACTING</span><span class="kbd">KSA</span></div><div class="case-thumb"><span class="case-thumb-label">CASE_02 · CTR</span></div><div class="case-body"><h3 class="h-3"><span class="lang-ar">شركة مقاولات — تتبع المشاريع والتكاليف</span><span class="lang-en">Contracting firm — project & cost tracking</span></h3><p><span class="lang-ar">تطبيق وحدات المشاريع، المشتريات، الفوترة المرحلية، وتكامل مع نظام الحضور الميداني للعمال.</span><span class="lang-en">Project, procurement and progress-billing modules wired to a field-attendance system for site labour.</span></p><div class="case-stats"><div><span class="stat-num">90+</span><span class="label"><span class="lang-ar">مشروع نشط</span><span class="lang-en">live projects</span></span></div><div><span class="stat-num">+22%</span><span class="label"><span class="lang-ar">دقة الفوترة</span><span class="lang-en">billing accuracy</span></span></div><div><span class="stat-num">10wk</span><span class="label"><span class="lang-ar">المدة</span><span class="lang-en">duration</span></span></div></div></div></article>
+      <article class="case"><div class="case-tags"><span class="kbd">TRANSPORTATION</span><span class="kbd">SUDAN → KSA</span></div><div class="case-thumb"><span class="case-thumb-label">CASE_03 · TRN</span></div><div class="case-body"><h3 class="h-3"><span class="lang-ar">مزود خدمات لوجستية — منصة نقل موحدة</span><span class="lang-en">Logistics provider — unified transport platform</span></h3><p><span class="lang-ar">إدارة الأسطول، رحلات النقل، فواتير العملاء، وتكامل مع بوابات الدفع وأنظمة تتبع المركبات.</span><span class="lang-en">Fleet management, trip ledgers, customer invoicing, and integration with payment gateways and vehicle tracking.</span></p><div class="case-stats"><div><span class="stat-num">140</span><span class="label"><span class="lang-ar">مركبة</span><span class="lang-en">vehicles</span></span></div><div><span class="stat-num">2</span><span class="label"><span class="lang-ar">دول</span><span class="lang-en">countries</span></span></div><div><span class="stat-num">−4d</span><span class="label"><span class="lang-ar">دورة الفوترة</span><span class="lang-en">invoice cycle</span></span></div></div></div></article>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     TECH STACK
-     ============================================================ -->
 <section class="section" id="stack" data-screen-label="05 Stack">
   <div class="wrap">
     <div class="section-head">
-      <div class="meta">
-        <span><b>§ 05</b> · STACK</span>
-        <span>MODULES + INTEGRATIONS</span>
-      </div>
+      <div class="meta"><span><b>§ 05</b> · STACK</span><span>MODULES + INTEGRATIONS</span></div>
       <div class="title">
-        <h2 class="h-1">
-          <span class="lang-ar">المنظومة التقنية التي أعمل عليها يومياً.</span>
-          <span class="lang-en">The technical stack I work with daily.</span>
-        </h2>
-        <p class="lede">
-          <span class="lang-ar">أودو هو الأساس — حوله طبقات من التكامل مع البنوك، الشحن، الفوترة الحكومية والمنصات الخارجية.</span>
-          <span class="lang-en">Odoo at the core — layered with integrations to banking, shipping, government invoicing, and third-party platforms.</span>
-        </p>
+        <h2 class="h-1"><span class="lang-ar">المنظومة التقنية التي أعمل عليها يومياً.</span><span class="lang-en">The technical stack I work with daily.</span></h2>
+        <p class="lede"><span class="lang-ar">أودو هو الأساس — حوله طبقات من التكامل مع البنوك، الشحن، الفوترة الحكومية والمنصات الخارجية.</span><span class="lang-en">Odoo at the core — layered with integrations to banking, shipping, government invoicing, and third-party platforms.</span></p>
       </div>
     </div>
-
     <div class="stack-block">
-      <h4 class="stack-label">
-        <span class="lang-ar">/ وحدات أودو الأساسية</span>
-        <span class="lang-en">/ Odoo core modules</span>
-      </h4>
+      <h4 class="stack-label"><span class="lang-ar">/ وحدات أودو الأساسية</span><span class="lang-en">/ Odoo core modules</span></h4>
       <div class="stack-grid">
         <div class="tile"><span class="tile-num">01</span><span class="tile-name">Accounting</span></div>
         <div class="tile"><span class="tile-num">02</span><span class="tile-name">Inventory</span></div>
@@ -471,12 +290,8 @@
         <div class="tile"><span class="tile-num">12</span><span class="tile-name">Studio</span></div>
       </div>
     </div>
-
     <div class="stack-block">
-      <h4 class="stack-label">
-        <span class="lang-ar">/ التكاملات الخارجية</span>
-        <span class="lang-en">/ External integrations</span>
-      </h4>
+      <h4 class="stack-label"><span class="lang-ar">/ التكاملات الخارجية</span><span class="lang-en">/ External integrations</span></h4>
       <div class="stack-grid">
         <div class="tile"><span class="tile-num">→</span><span class="tile-name">ZATCA · KSA e-Invoice</span></div>
         <div class="tile"><span class="tile-num">→</span><span class="tile-name">Bank Statement APIs</span></div>
@@ -488,125 +303,65 @@
         <div class="tile"><span class="tile-num">→</span><span class="tile-name">Custom REST / GraphQL</span></div>
       </div>
     </div>
-
     <div class="stack-block">
-      <h4 class="stack-label">
-        <span class="lang-ar">/ القطاعات</span>
-        <span class="lang-en">/ Industries served</span>
-      </h4>
+      <h4 class="stack-label"><span class="lang-ar">/ القطاعات</span><span class="lang-en">/ Industries served</span></h4>
       <div class="industries">
-        <span><span class="lang-ar">التجارة</span><span class="lang-en">Trading</span></span>
-        <span class="dot">·</span>
-        <span><span class="lang-ar">التصنيع</span><span class="lang-en">Manufacturing</span></span>
-        <span class="dot">·</span>
-        <span><span class="lang-ar">العقارات</span><span class="lang-en">Real Estate</span></span>
-        <span class="dot">·</span>
-        <span><span class="lang-ar">المقاولات</span><span class="lang-en">Contracting</span></span>
-        <span class="dot">·</span>
+        <span><span class="lang-ar">التجارة</span><span class="lang-en">Trading</span></span><span class="dot">·</span>
+        <span><span class="lang-ar">التصنيع</span><span class="lang-en">Manufacturing</span></span><span class="dot">·</span>
+        <span><span class="lang-ar">العقارات</span><span class="lang-en">Real Estate</span></span><span class="dot">·</span>
+        <span><span class="lang-ar">المقاولات</span><span class="lang-en">Contracting</span></span><span class="dot">·</span>
         <span><span class="lang-ar">النقل والخدمات اللوجستية</span><span class="lang-en">Transportation & Logistics</span></span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     TESTIMONIAL + BLOG
-     ============================================================ -->
 <section class="section section-dark" data-screen-label="06 Voices">
   <div class="wrap">
     <div class="section-head">
-      <div class="meta">
-        <span><b>§ 06</b> · VOICES</span>
-        <span>CLIENT QUOTES</span>
-      </div>
+      <div class="meta"><span><b>§ 06</b> · VOICES</span><span>CLIENT QUOTES</span></div>
       <div class="title">
-        <h2 class="h-1">
-          <span class="lang-ar">ما يقوله الذين عملوا معي.</span>
-          <span class="lang-en">What people I've worked with say.</span>
-        </h2>
+        <h2 class="h-1"><span class="lang-ar">ما يقوله الذين عملوا معي.</span><span class="lang-en">What people I've worked with say.</span></h2>
       </div>
     </div>
-
     <div class="quotes-grid">
       <figure class="quote">
-        <div class="quote-mark mono">”</div>
+        <div class="quote-mark mono">"</div>
         <blockquote>
           <span class="lang-ar">إبراهيم لا يقدّم برمجيات — يقدّم وضوحاً. خلال أسبوعين فهمنا كيف تعمل شركتنا فعلاً.</span>
           <span class="lang-en">Ibrahim doesn't deliver software — he delivers clarity. Within two weeks we understood how our company actually runs.</span>
         </blockquote>
-        <figcaption>
-          <span class="mono">— OPS DIRECTOR · MANUFACTURING SECTOR</span>
-        </figcaption>
+        <figcaption><span class="mono">— OPS DIRECTOR · MANUFACTURING SECTOR</span></figcaption>
       </figure>
       <figure class="quote">
-        <div class="quote-mark mono">”</div>
+        <div class="quote-mark mono">"</div>
         <blockquote>
           <span class="lang-ar">منهجي، صبور، ويتحدث بلغة الإدارة والفرق التقنية في نفس الوقت. التطبيق الوحيد الذي لم يتأخر.</span>
           <span class="lang-en">Methodical, patient, and speaks both leadership and engineering. The only ERP rollout I've seen ship on time.</span>
         </blockquote>
-        <figcaption>
-          <span class="mono">— CFO · CONTRACTING GROUP</span>
-        </figcaption>
+        <figcaption><span class="mono">— CFO · CONTRACTING GROUP</span></figcaption>
       </figure>
     </div>
-
-    <hr class="hr" style="margin-block: 64px;" />
-
+    <hr class="hr" style="margin-block: 64px; border-color: rgba(244,246,248,0.15);" />
     <div class="blog-block">
       <div class="blog-head">
         <span class="label"><span class="lang-ar">دفتر الملاحظات</span><span class="lang-en">Field Notes</span></span>
-        <a href="articles.html" class="mono blog-all">
-          <span class="lang-ar">كل المقالات ↗</span>
-          <span class="lang-en">All notes ↗</span>
-        </a>
+        <a href="articles.html" class="mono blog-all"><span class="lang-ar">كل المقالات ↗</span><span class="lang-en">All notes ↗</span></a>
       </div>
       <div class="blog-grid">
-        <a class="blog-item" href="article-upgrade.html">
-          <span class="mono blog-date">2026 · 03 · 14</span>
-          <h3 class="h-3">
-            <span class="lang-ar">قائمة فحص قبل ترقية أودو من v15 إلى v17</span>
-            <span class="lang-en">A pre-flight checklist for upgrading Odoo v15 → v17</span>
-          </h3>
-          <span class="mono blog-read">
-            <span class="lang-ar">قراءة 7 دقائق</span>
-            <span class="lang-en">7 min read</span>
-          </span>
-        </a>
-        <a class="blog-item" href="article-coa.html">
-          <span class="mono blog-date">2026 · 02 · 02</span>
-          <h3 class="h-3">
-            <span class="lang-ar">كيف تُعدّ شجرة الحسابات لشركة مقاولات سعودية</span>
-            <span class="lang-en">Designing a chart of accounts for a Saudi contracting firm</span>
-          </h3>
-          <span class="mono blog-read">
-            <span class="lang-ar">قراءة 9 دقائق</span>
-            <span class="lang-en">9 min read</span>
-          </span>
-        </a>
-        <a class="blog-item" href="article-zatca.html">
-          <span class="mono blog-date">2025 · 11 · 21</span>
-          <h3 class="h-3">
-            <span class="lang-ar">دمج ZATCA Phase 2 مع أودو — ما يجب الحذر منه</span>
-            <span class="lang-en">Integrating ZATCA Phase 2 with Odoo — what to watch for</span>
-          </h3>
-          <span class="mono blog-read">
-            <span class="lang-ar">قراءة 11 دقيقة</span>
-            <span class="lang-en">11 min read</span>
-          </span>
-        </a>
+        <a class="blog-item" href="article-upgrade.html"><span class="mono blog-date">2026 · 03 · 14</span><h3 class="h-3"><span class="lang-ar">قائمة فحص قبل ترقية أودو من v15 إلى v17</span><span class="lang-en">A pre-flight checklist for upgrading Odoo v15 → v17</span></h3><span class="mono blog-read"><span class="lang-ar">قراءة 7 دقائق</span><span class="lang-en">7 min read</span></span></a>
+        <a class="blog-item" href="article-coa.html"><span class="mono blog-date">2026 · 02 · 02</span><h3 class="h-3"><span class="lang-ar">كيف تُعدّ شجرة الحسابات لشركة مقاولات سعودية</span><span class="lang-en">Designing a chart of accounts for a Saudi contracting firm</span></h3><span class="mono blog-read"><span class="lang-ar">قراءة 9 دقائق</span><span class="lang-en">9 min read</span></span></a>
+        <a class="blog-item" href="article-zatca.html"><span class="mono blog-date">2025 · 11 · 21</span><h3 class="h-3"><span class="lang-ar">دمج ZATCA Phase 2 مع أودو — ما يجب الحذر منه</span><span class="lang-en">Integrating ZATCA Phase 2 with Odoo — what to watch for</span></h3><span class="mono blog-read"><span class="lang-ar">قراءة 11 دقيقة</span><span class="lang-en">11 min read</span></span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     VENTURE
-     ============================================================ -->
 <section class="section section-dark" id="venture" data-screen-label="07 Venture">
   <div class="wrap">
     <div class="venture" style="display:grid; grid-template-columns:auto 1fr; gap:clamp(28px,5vw,64px); align-items:center; border-top:1px solid rgba(244,246,248,0.18); border-bottom:1px solid rgba(244,246,248,0.18); padding-block:clamp(36px,5vw,56px);">
       <div class="venture-mark" aria-label="AQTAB" style="width:clamp(84px,10vw,120px); height:clamp(84px,10vw,120px); flex:none;">
-        <svg viewBox="0 0 64 64" fill="none" width="100%" height="100%" role="img" aria-label="AQTAB axis mark">
+        <svg viewBox="0 0 64 64" fill="none" width="100%" height="100%">
           <circle cx="32" cy="32" r="28.5" stroke="#f4f6f8" stroke-width="2"/>
           <line x1="32" y1="32" x2="47.2" y2="16.8" stroke="rgba(244,246,248,0.45)" stroke-width="1.6" stroke-linecap="round"/>
           <line x1="32" y1="32" x2="16.8" y2="16.8" stroke="rgba(244,246,248,0.45)" stroke-width="1.6" stroke-linecap="round"/>
@@ -616,52 +371,48 @@
           <circle cx="16.8" cy="16.8" r="3.4" fill="#f4f6f8"/>
           <circle cx="16.8" cy="47.2" r="3.4" fill="#f4f6f8"/>
           <circle cx="47.2" cy="47.2" r="3.4" fill="#f4f6f8"/>
-          <circle cx="32" cy="32" r="5.2" fill="var(--teal)"/>
+          <circle cx="32" cy="32" r="5.2" fill="#356b7d"/>
         </svg>
       </div>
       <div class="venture-body" style="display:flex; flex-direction:column; gap:12px;">
         <span class="label mono" dir="ltr">§ VENTURE · 2026</span>
-        <div class="h-display" style="line-height:1;">أقطاب</div>
+        <div class="h-display" style="line-height:1; color:#f4f6f8; text-shadow: 0 0 60px rgba(53,107,125,0.4);">أقطاب</div>
         <div class="mono" style="font-size:clamp(13px,1.4vw,16px); letter-spacing:.32em; color:rgba(244,246,248,0.78);">AQTAB ERP CONSULTING</div>
-        <p class="lede" style="margin-top:6px;">استشارات أودو للشركات متعددة القطاعات</p>
-        <span class="mono" style="margin-top:8px; font-size:12px; letter-spacing:.08em; color:var(--amber);">● قيد الإطلاق</span>
+        <p class="lede" style="margin-top:6px; color:rgba(244,246,248,0.85);">استشارات أودو للشركات متعددة القطاعات</p>
+        <span class="mono" style="margin-top:8px; font-size:12px; letter-spacing:.08em; color:#c49c18;">● قيد الإطلاق</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     CTA
-     ============================================================ -->
-<section class="section cta section-dark" data-screen-label="07 CTA" style="background: linear-gradient(135deg, #1a2028 0%, #235261 60%, #356b7d 100%);">
+<section class="section cta section-dark" data-screen-label="08 CTA" style="background: linear-gradient(135deg, #1a2028 0%, #235261 60%, #356b7d 100%);">
   <div class="wrap">
     <div class="cta-card">
-      <div class="cta-meta mono">
+      <div class="cta-meta mono" style="color:rgba(244,246,248,0.6);">
         <span>§ END · LET'S TALK</span>
         <span>RIYADH · GMT+3</span>
       </div>
-      <h2 class="h-display">
+      <h2 class="h-display" style="color:#f4f6f8;">
         <span class="lang-ar">عندك مشروع<br/>أودو؟</span>
         <span class="lang-en">Got an Odoo<br/>project?</span>
       </h2>
-      <p class="lede">
+      <p class="lede" style="color:rgba(244,246,248,0.85);">
         <span class="lang-ar">جلسة تشخيصية مجانية ٣٠ دقيقة. سأخبرك بصراحة ما إذا كان أودو هو الحل المناسب — وما إذا كنتُ المستشار المناسب.</span>
         <span class="lang-en">A free 30-minute diagnostic call. I'll tell you honestly whether Odoo is the right fit — and whether I'm the right consultant.</span>
       </p>
       <div class="cta-actions">
-        <a class="btn" href="contact.html">
+        <a class="btn" href="contact.html" style="background:#f4f6f8; color:#1a2028; border-color:#f4f6f8;">
           <span class="lang-ar">احجز الجلسة</span>
           <span class="lang-en">Book the call</span>
           <span class="arrow">↗</span>
         </a>
-        <a class="btn btn-ghost" href="mailto:ibrahimanwer07@gmail.com" dir="ltr">ibrahimanwer07@gmail.com</a>
+        <a class="btn btn-ghost" href="mailto:ibrahimanwer07@gmail.com" dir="ltr" style="color:#f4f6f8; border-color:rgba(244,246,248,0.4);">ibrahimanwer07@gmail.com</a>
       </div>
     </div>
   </div>
 </section>
 
 <div id="site-footer"></div>
-
 <script src="assets/shared.js"></script>
 <script src="assets/partials.js"></script>
 </body>
