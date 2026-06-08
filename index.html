@@ -45,6 +45,18 @@ html { scroll-behavior: smooth; }
 }
 .ticker-track > span:nth-child(even) { color: #356b7d; }
 @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+/* Burst decoration */
+@keyframes burst-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+@keyframes burst-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+.burst-svg { animation: burst-float 4s ease-in-out infinite; }
+.burst-dot { animation: burst-pulse 2s ease-in-out infinite; }
 </style>
 </head>
 <body>
@@ -60,37 +72,6 @@ html { scroll-behavior: smooth; }
 ">
   <div class="wrap">
 
-    <!-- Decorative gold streaks -->
-    <span aria-hidden="true" style="
-      position:absolute; top:18%; inset-inline-start:-20px;
-      width:260px; height:6px; background:#f0a500;
-      border-radius:3px; opacity:0.6; transform:rotate(1.5deg);
-      pointer-events:none;"></span>
-
-    <span aria-hidden="true" style="
-      position:absolute; top:28%; inset-inline-start:80px;
-      width:140px; height:4px; background:#f0a500;
-      border-radius:3px; opacity:0.4; transform:rotate(1.5deg);
-      pointer-events:none;"></span>
-
-    <span aria-hidden="true" style="
-      position:absolute; top:55%; inset-inline-end:-10px;
-      width:300px; height:6px; background:#f0a500;
-      border-radius:3px; opacity:0.65; transform:rotate(-1.5deg);
-      pointer-events:none;"></span>
-
-    <span aria-hidden="true" style="
-      position:absolute; top:63%; inset-inline-end:100px;
-      width:160px; height:4px; background:#f0a500;
-      border-radius:3px; opacity:0.4; transform:rotate(-1.5deg);
-      pointer-events:none;"></span>
-
-    <span aria-hidden="true" style="
-      position:absolute; bottom:15%; inset-inline-start:20%;
-      width:200px; height:5px; background:#f0a500;
-      border-radius:3px; opacity:0.5; transform:rotate(1deg);
-      pointer-events:none;"></span>
-
     <!-- Main headline -->
     <p style="
       font-family: var(--f-mono);
@@ -101,23 +82,60 @@ html { scroll-behavior: smooth; }
       margin-bottom: 24px;
     ">مستشار أودو ERP · مؤسس أقطاب · الرياض</p>
 
-    <h6 style="
-      font-family: var(--f-sans);
-      font-size: clamp(28px, 4.5vw, 58px);
-      font-weight: 700;
-      line-height: 1.1;
-      color: #1a2028;
-      margin-bottom: 16px;
-      text-wrap: balance;
-    ">
-      خبرة <span style="
-        background: linear-gradient(135deg, #1a2028, #c0cb43);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      ">تسع سنوات</span> في تحويل
-      <br/>عمليات الشركات عبر <span style="display:inline; background:#f0a500; color:#1a2028; padding:4px 14px; border-radius:6px; white-space:nowrap;">أودو ERP</span>
-    </h6>
+    <div style="position:relative; display:inline-block; text-align:center; width:100%;">
+
+      <!-- Burst SVG decoration -->
+      <svg class="burst-svg" aria-hidden="true" style="
+        position:absolute; inset:0; width:100%; height:100%;
+        pointer-events:none; overflow:visible; z-index:0;
+      " viewBox="0 0 800 200">
+        <!-- Top burst lines -->
+        <line x1="400" y1="0" x2="380" y2="-40" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+        <line x1="400" y1="0" x2="420" y2="-40" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+        <line x1="400" y1="0" x2="400" y2="-50" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+        <!-- Left burst lines -->
+        <line x1="80" y1="100" x2="20" y2="80" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="80" y1="100" x2="10" y2="110" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+        <line x1="80" y1="100" x2="20" y2="130" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+        <!-- Right burst lines -->
+        <line x1="720" y1="100" x2="780" y2="80" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="720" y1="100" x2="790" y2="110" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+        <line x1="720" y1="100" x2="780" y2="130" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+        <!-- Gold dots -->
+        <circle class="burst-dot" cx="320" cy="-20" r="5" fill="#f0a500" opacity="0.8"/>
+        <circle class="burst-dot" cx="480" cy="-20" r="5" fill="#f0a500" opacity="0.8"/>
+        <circle class="burst-dot" cx="50" cy="60" r="6" fill="#f0a500" opacity="0.7"/>
+        <circle class="burst-dot" cx="750" cy="60" r="6" fill="#f0a500" opacity="0.7"/>
+        <circle class="burst-dot" cx="60" cy="150" r="4" fill="#f0a500" opacity="0.5"/>
+        <circle class="burst-dot" cx="740" cy="150" r="4" fill="#f0a500" opacity="0.5"/>
+        <!-- Small diamonds -->
+        <polygon points="400,-55 405,-45 400,-50 395,-45" fill="#f0a500" opacity="0.9"/>
+        <polygon points="310,-30 315,-22 310,-26 305,-22" fill="#f0a500" opacity="0.7"/>
+        <polygon points="490,-30 495,-22 490,-26 485,-22" fill="#f0a500" opacity="0.7"/>
+      </svg>
+
+      <!-- The actual headline -->
+      <div style="position:relative; z-index:1;">
+        <h6 style="
+          font-family: var(--f-sans);
+          font-size: clamp(28px, 4.5vw, 58px);
+          font-weight: 700;
+          line-height: 1.1;
+          color: #1a2028;
+          margin-bottom: 16px;
+          text-wrap: balance;
+        ">
+          خبرة <span style="
+            background: linear-gradient(135deg, #1a2028, #f0a500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          ">تسع سنوات</span> في تحويل
+          <br/>عمليات الشركات عبر <span style="display:inline; background:#f0a500; color:#1a2028; padding:4px 14px; border-radius:6px; white-space:nowrap;">أودو ERP</span>
+        </h6>
+      </div>
+
+    </div>
 
     <h2 style="
       font-family: var(--f-sans);
