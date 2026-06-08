@@ -155,12 +155,14 @@ html[dir="rtl"] .ticker-track { animation-direction: reverse; }
   flex-direction: column;
   gap: 12px;
   background: var(--bg);
-  transition: background 200ms ease;
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
   position: relative;
 }
 .svc:hover {
   background: #e0eff4;
-  transition: background 200ms ease;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(53,107,125,0.2);
+  border-inline-start: 3px solid #356b7d;
 }
 .svc-num {
   font-family: var(--f-mono);
@@ -193,6 +195,8 @@ html[dir="rtl"] .ticker-track { animation-direction: reverse; }
   border-bottom: 1px solid var(--line);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
   gap: 12px;
   background: var(--bg);
 }
