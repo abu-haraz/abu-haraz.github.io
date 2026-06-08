@@ -11,39 +11,6 @@
 <link rel="stylesheet" href="assets/shared.css" />
 <link rel="stylesheet" href="assets/home.css" />
 <style>
-/* ── Hero dark gradient ── */
-.hero {
-  background: linear-gradient(135deg, #1a2028 0%, #1e2d3a 40%, #235261 70%, #356b7d 100%);
-}
-.hero .h-display { color: #f4f6f8; }
-.hero .label { color: rgba(244,246,248,0.6); }
-.hero .lede { color: rgba(244,246,248,0.85); }
-.hero .callout-val { color: #f4f6f8; }
-.hero .callout-cap { color: rgba(244,246,248,0.6); }
-.hero .mono { color: rgba(244,246,248,0.7); }
-.hero .hero-meta { background: rgba(255,255,255,0.05); border-color: rgba(244,246,248,0.15); }
-.hero .meta-cell { border-color: rgba(244,246,248,0.12); color: rgba(244,246,248,0.7); }
-.hero .label-num { color: #356b7d; }
-.hero .hero-tag { border-color: rgba(244,246,248,0.15); }
-.hero .ticker { background: rgba(0,0,0,0.25); border-color: rgba(244,246,248,0.1); }
-.hero .ticker-track { color: rgba(244,246,248,0.7); }
-.hero .ticker-track > span:nth-child(even) { color: #356b7d; }
-
-/* Portrait on dark */
-.hero .portrait::before { border-color: #356b7d; box-shadow: 0 0 0 4px rgba(53,107,125,0.2), 0 0 40px rgba(53,107,125,0.15); }
-.hero .portrait::after { border-color: rgba(53,107,125,0.4); }
-.hero .portrait-meta { background: rgba(26,32,40,0.85); color: rgba(244,246,248,0.8); border-color: rgba(244,246,248,0.2); }
-.hero .portrait-meta.br { color: #38a070; border-color: rgba(56,160,112,0.4); }
-
-/* Founder line */
-.founder-line { color: #356b7d !important; }
-
-/* Hero CTA buttons on dark */
-.hero .btn { background: #f4f6f8; color: #1a2028; border-color: #f4f6f8; }
-.hero .btn:hover { background: #356b7d; color: #f4f6f8; border-color: #356b7d; }
-.hero .btn-ghost { background: transparent; color: #f4f6f8; border-color: rgba(244,246,248,0.4); }
-.hero .btn-ghost:hover { background: rgba(244,246,248,0.1); border-color: #f4f6f8; color: #f4f6f8; }
-
 /* Services gradient */
 #services { background: linear-gradient(135deg, #1a2028 0%, #235261 100%) !important; }
 
@@ -63,117 +30,267 @@
 
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
+
+/* Ticker */
+.ticker-track {
+  display: flex;
+  gap: 24px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(244,246,248,0.7);
+  white-space: nowrap;
+  flex-shrink: 0;
+  animation: tick 60s linear infinite;
+}
+.ticker-track > span:nth-child(even) { color: #356b7d; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 </style>
 </head>
 <body>
 
 <div id="site-header"></div>
 
-<section class="hero" data-screen-label="01 Hero">
+<!-- HERO NEW -->
+<section class="hero-new" style="
+  padding: clamp(60px,8vw,120px) 0 0;
+  text-align: center;
+  background: #f4f6f8;
+  overflow: hidden;
+">
   <div class="wrap">
-    <div class="hero-meta">
-      <div class="meta-cell">
-        <span class="label-num">N°</span>
-        <span class="mono">001 / HOME</span>
+
+    <!-- Main headline -->
+    <p style="
+      font-family: var(--f-mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: #697585;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    ">مستشار أودو ERP · مؤسس أقطاب · الرياض</p>
+
+    <h1 style="
+      font-family: var(--f-sans);
+      font-size: clamp(42px, 7vw, 96px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #1a2028;
+      margin-bottom: 16px;
+      text-wrap: balance;
+    ">
+      خبرة <span style="
+        background: linear-gradient(135deg, #1a2028, #356b7d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      ">تسع سنوات</span> في تحويل
+      <br/>عمليات الشركات عبر <span style="
+        position: relative;
+        display: inline-block;
+      ">
+        <span style="
+          position: relative;
+          z-index: 1;
+          color: #f4f6f8;
+          padding: 0 12px;
+        ">أودو ERP</span>
+        <span style="
+          position: absolute;
+          inset: 0;
+          background: #1a2028;
+          border-radius: 4px;
+          z-index: 0;
+        "></span>
+      </span>
+    </h1>
+
+    <h2 style="
+      font-family: var(--f-sans);
+      font-size: clamp(18px, 2.5vw, 28px);
+      font-weight: 400;
+      color: #697585;
+      margin-bottom: 40px;
+      text-wrap: balance;
+    ">
+      من التحليل إلى الإطلاق —
+      <span style="
+        color: #356b7d;
+        font-weight: 600;
+        border-bottom: 2px solid #356b7d;
+        padding-bottom: 2px;
+      ">عملية واحدة متكاملة.</span>
+    </h2>
+
+    <!-- Stats row -->
+    <div style="
+      display: inline-flex;
+      gap: 0;
+      border: 1px solid #cfd4d8;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      background: white;
+    ">
+      <div style="padding: 20px 32px; border-inline-end: 1px solid #cfd4d8;">
+        <div style="font-family:var(--f-mono); font-size:32px; font-weight:700; color:#1a2028;">+9</div>
+        <div style="font-family:var(--f-mono); font-size:11px; color:#697585; letter-spacing:0.08em;">سنوات خبرة</div>
       </div>
-      <div class="meta-cell">
-        <span class="label-num">LOC</span>
-        <span class="mono">الرياض · المملكة العربية السعودية</span>
+      <div style="padding: 20px 32px; border-inline-end: 1px solid #cfd4d8;">
+        <div style="font-family:var(--f-mono); font-size:32px; font-weight:700; color:#356b7d;">+11</div>
+        <div style="font-family:var(--f-mono); font-size:11px; color:#697585; letter-spacing:0.08em;">تطبيق كامل</div>
       </div>
-      <div class="meta-cell">
-        <span class="label-num">YR</span>
-        <span class="mono">2026 · مستشار أودو</span>
-      </div>
-      <div class="meta-cell">
-        <span class="label-num">STA</span>
-        <span class="status-dot">
-          <span class="lang-ar">متاح للمشاريع</span>
-          <span class="lang-en">Open for engagements</span>
-        </span>
+      <div style="padding: 20px 32px;">
+        <div style="font-family:var(--f-mono); font-size:32px; font-weight:700; color:#1a2028;">5</div>
+        <div style="font-family:var(--f-mono); font-size:11px; color:#697585; letter-spacing:0.08em;">قطاعات</div>
       </div>
     </div>
 
-    <div class="hero-display">
-      <div class="display-left">
-        <p class="label" style="margin-bottom: 20px;">
-          <span class="lang-ar">المستشار · مهندس أنظمة المؤسسات</span>
-          <span class="lang-en">Consultant · Enterprise Systems Engineer</span>
-        </p>
-        <h1 class="h-display">
-          <span class="lang-ar">إبراهيم<br/>أبو&nbsp;حراز.</span>
-          <span class="lang-en">Ibrahim<br/>Abu&nbsp;Haraz.</span>
-        </h1>
-        <p class="mono founder-line" style="margin-top:18px; font-size:13px; letter-spacing:.04em;">مؤسس أقطاب · Founder of AQTAB</p>
-      </div>
-      <div class="display-right">
-        <div class="portrait lg" aria-label="Ibrahim Abu Haraz">
-          <img src="assets/portrait.png" alt="Ibrahim Abu Haraz" width="220" height="220" />
-          <span class="portrait-meta tl">N° 001</span>
-          <span class="portrait-meta br">● LIVE</span>
+    <!-- CTA buttons -->
+    <div style="
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    ">
+      <a href="contact.html" style="
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 32px;
+        background: #1a2028;
+        color: #f4f6f8;
+        font-family: var(--f-mono);
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background 200ms;
+      ">
+        <span class="lang-ar">احجز جلسة مجانية</span>
+        <span class="lang-en">Book free session</span>
+        ↗
+      </a>
+      <a href="services.html" style="
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 32px;
+        background: transparent;
+        color: #1a2028;
+        font-family: var(--f-mono);
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        border: 1px solid #cfd4d8;
+        border-radius: 4px;
+        transition: all 200ms;
+      ">
+        <span class="lang-ar">استعرض الخدمات</span>
+        <span class="lang-en">Explore services</span>
+      </a>
+    </div>
+
+    <!-- Portrait + AQTAB badge -->
+    <div style="
+      position: relative;
+      display: inline-block;
+      margin-bottom: -4px;
+    ">
+      <!-- Dark backdrop -->
+      <div style="
+        width: clamp(280px, 40vw, 520px);
+        height: clamp(240px, 32vw, 400px);
+        background: linear-gradient(135deg, #1a2028 0%, #235261 100%);
+        border-radius: 16px 16px 0 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-top: 40px;
+        overflow: hidden;
+        position: relative;
+      ">
+        <!-- Grid pattern overlay -->
+        <div style="
+          position: absolute;
+          inset: 0;
+          background-image: linear-gradient(rgba(244,246,248,0.04) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(244,246,248,0.04) 1px, transparent 1px);
+          background-size: 32px 32px;
+        "></div>
+
+        <!-- Portrait -->
+        <img src="assets/portrait.png" alt="Ibrahim Abu Haraz" style="
+          width: clamp(180px, 28vw, 360px);
+          height: auto;
+          object-fit: cover;
+          object-position: top;
+          position: relative;
+          z-index: 1;
+          filter: saturate(0.9) contrast(1.05);
+        "/>
+
+        <!-- AQTAB badge -->
+        <div style="
+          position: absolute;
+          top: 20px;
+          inset-inline-start: 20px;
+          background: rgba(53,107,125,0.9);
+          border: 1px solid rgba(244,246,248,0.2);
+          padding: 8px 14px;
+          border-radius: 4px;
+          font-family: var(--f-mono);
+          font-size: 10px;
+          color: #f4f6f8;
+          letter-spacing: 0.1em;
+          z-index: 2;
+        ">● مؤسس أقطاب · AQTAB</div>
+
+        <!-- Available badge -->
+        <div style="
+          position: absolute;
+          top: 20px;
+          inset-inline-end: 20px;
+          background: rgba(26,32,40,0.85);
+          border: 1px solid rgba(56,160,112,0.4);
+          padding: 8px 14px;
+          border-radius: 4px;
+          font-family: var(--f-mono);
+          font-size: 10px;
+          color: #38a070;
+          letter-spacing: 0.08em;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        ">
+          <span style="width:6px;height:6px;border-radius:50%;background:#38a070;display:inline-block;"></span>
+          متاح للمشاريع
         </div>
-        <div class="callouts">
-          <div class="callout">
-            <span class="label">EXP</span>
-            <span class="callout-val">9<span class="plus">+</span></span>
-            <span class="mono callout-cap">
-              <span class="lang-ar">سنوات خبرة</span>
-              <span class="lang-en">years experience</span>
-            </span>
-          </div>
-          <div class="callout">
-            <span class="label">IMPL</span>
-            <span class="callout-val">11<span class="plus">+</span></span>
-            <span class="mono callout-cap">
-              <span class="lang-ar">تطبيقات كاملة</span>
-              <span class="lang-en">full-cycle ERPs</span>
-            </span>
-          </div>
-          <div class="callout">
-            <span class="label">SEC</span>
-            <span class="callout-val">5</span>
-            <span class="mono callout-cap">
-              <span class="lang-ar">قطاعات صناعية</span>
-              <span class="lang-en">industry sectors</span>
-            </span>
-          </div>
-        </div>
       </div>
     </div>
 
-    <div class="hero-tag">
-      <p class="lede">
-        <span class="lang-ar">
-          مستشار أنظمة <b>أودو</b> أساعد الشركات في تحويل عملياتها اليومية إلى منظومة رقمية متكاملة — من التطبيق والتخصيص إلى التدريب والدعم المستمر في قطاعات التجارة، التصنيع، المقاولات، النقل وخدمات الموارد البشرية.
-        </span>
-        <span class="lang-en">
-          I help multi-sector businesses convert daily operations into a single, integrated digital backbone with <b>Odoo</b> — from implementation and customization to training and continuous support across trading, manufacturing, contracting, transportation and HR services.
-        </span>
-      </p>
-      <div class="hero-cta">
-        <a class="btn" href="contact.html">
-          <span class="lang-ar">احجز جلسة استشارية</span>
-          <span class="lang-en">Book a consultation</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="btn btn-ghost" href="services.html">
-          <span class="lang-ar">استعرض الخدمات</span>
-          <span class="lang-en">Explore services</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="ticker">
+    <!-- Ticker -->
+    <div style="
+      border-top: 1px solid #cfd4d8;
+      border-bottom: 1px solid #cfd4d8;
+      background: #1a2028;
+      padding-block: 14px;
+      overflow: hidden;
+      display: flex;
+      gap: 24px;
+      margin-inline: calc(var(--pad) * -1);
+    ">
       <div class="ticker-track">
         <span>ODOO v17</span><span>·</span>
         <span>ACCOUNTING</span><span>·</span>
         <span>INVENTORY</span><span>·</span>
         <span>MANUFACTURING</span><span>·</span>
-        <span>POS</span><span>·</span>
         <span>HR & PAYROLL</span><span>·</span>
         <span>CRM</span><span>·</span>
-        <span>E-COMMERCE</span><span>·</span>
+        <span>ZATCA</span><span>·</span>
         <span>FLEET</span><span>·</span>
-        <span>PROJECT</span><span>·</span>
         <span>CUSTOM MODULES</span><span>·</span>
         <span>API INTEGRATIONS</span><span>·</span>
       </div>
@@ -182,18 +299,18 @@ html { scroll-behavior: smooth; }
         <span>ACCOUNTING</span><span>·</span>
         <span>INVENTORY</span><span>·</span>
         <span>MANUFACTURING</span><span>·</span>
-        <span>POS</span><span>·</span>
         <span>HR & PAYROLL</span><span>·</span>
         <span>CRM</span><span>·</span>
-        <span>E-COMMERCE</span><span>·</span>
+        <span>ZATCA</span><span>·</span>
         <span>FLEET</span><span>·</span>
-        <span>PROJECT</span><span>·</span>
         <span>CUSTOM MODULES</span><span>·</span>
         <span>API INTEGRATIONS</span><span>·</span>
       </div>
     </div>
+
   </div>
 </section>
+<!-- END HERO NEW -->
 
 <section class="section section-dark" id="services" data-screen-label="02 Services">
   <div class="wrap">
